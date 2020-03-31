@@ -10,6 +10,6 @@ namespace Sangha.Models.RetreatModels
     {
         public string RetreatName { get; set; }
         public DateTimeOffset RetreatDate { get; set; }
-        public TimeSpan RetreatLength { get; set; }
+        public int RetreatLength { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace Sangha.Models.RetreatModels
         [Display(Name = "Start Date")]
         public DateTimeOffset RetreatDate { get; set; }
         [Display(Name = "Length of Retreat")]
-        public TimeSpan RetreatLength { get; set; }
+        public int RetreatLength { get; set; }
         [Display(Name = "Teacher(s)")]
         public ICollection<Teacher> Teacher { get; set; }
         public double AvgRating

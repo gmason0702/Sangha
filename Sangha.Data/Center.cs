@@ -18,19 +18,20 @@ namespace Sangha.Data
         public string State { get; set; }
         public string Country { get; set; }
 
-        [ForeignKey(nameof(Talks))]
-        public int TalkId { get; set; }//maybe don't need
-        public virtual ICollection<Talk> Talks { get; set; }
+        //[ForeignKey(nameof(Talks))]
+        //public int? TalkId { get; set; }//maybe don't need
+        public virtual ICollection<Talk> Talks { get; set; } //NonRetreatTalks
 
-        [ForeignKey(nameof(Teachers))]
-        public int TeacherId { get; set; }
-        public virtual ICollection<Teacher> Teachers { get; set; }
+        //[ForeignKey(nameof(Teachers))]
+        //public int? TeacherId { get; set; }
+        //public virtual ICollection<Teacher> Teachers { get; set; }
 
-        [ForeignKey(nameof(Retreats))]
-        public int RetreatId { get; set; }
+        //[ForeignKey(nameof(Retreats))]
+        //public int? RetreatId { get; set; }
         public virtual ICollection<Retreat> Retreats { get; set; }
 
         //public virtual ICollection<RetreatRating> Ratings { get; set; }
         public double AvgRating { get; set; }
+
     }
 }

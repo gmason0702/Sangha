@@ -11,7 +11,7 @@ namespace Sangha.Models.RetreatModels
     {
         public string RetreatName { get; set; }
         public DateTimeOffset RetreatDate { get; set; }
-        public TimeSpan RetreatLength { get; set; }
+        public int RetreatLength { get; set; }
         public ICollection<Teacher> Teacher { get; set; }
         public Center Center { get; set; }
     }

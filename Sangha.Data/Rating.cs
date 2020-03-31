@@ -31,11 +31,11 @@ namespace Sangha.Data
 
     public class CenterRating : Rating
     {
+        public DateTime VisitDate { get; set; }
 
         [ForeignKey(nameof(Center))]
         public int? CenterId { get; set; }
         public virtual Center Center { get; set; }
-        public DateTime VisitDate { get; set; }
     }
 }
 

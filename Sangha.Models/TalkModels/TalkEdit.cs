@@ -8,7 +8,7 @@ namespace Sangha.Models.TalkModels
 {
     public class TalkEdit
     {
-        public int TalkID { get; set; }
+        public int TalkId { get; set; }
         public string Name { get; set; }
         public string Teacher { get; set; }
         public string Topic { get; set; }

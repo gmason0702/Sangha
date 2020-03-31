@@ -10,5 +10,10 @@ namespace Sangha.Models.TalkModels
     {
         public string Name { get; set; }
         public string Description { get; set; }
+        public int TeacherId { get; set; }
+        public TimeSpan TalkLength { get; set; }
+        public DateTime TalkDate { get; set; }
+        public bool IsGuided { get; set; }
+        public int? RetreatId { get; set; }
     }
 }

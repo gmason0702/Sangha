@@ -65,4 +65,11 @@ namespace Sangha.Data
             HasKey(iur => iur.UserId);
         }
     }
+    //public class TalkConfiguration : EntityTypeConfiguration<Talk>
+    //{
+    //    public TalkConfiguration()
+    //    {
+
+    //    }
+    //}
 }
