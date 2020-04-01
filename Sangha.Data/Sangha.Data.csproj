@@ -63,6 +63,10 @@
     <Compile Include="Migrations\202003311937332_FixedTables.Designer.cs">
       <DependentUpon>202003311937332_FixedTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004011701555_UpdatedClassForeignKeyNamingConvention.cs" />
+    <Compile Include="Migrations\202004011701555_UpdatedClassForeignKeyNamingConvention.Designer.cs">
+      <DependentUpon>202004011701555_UpdatedClassForeignKeyNamingConvention.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rating.cs" />
@@ -78,6 +82,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202003311937332_FixedTables.resx">
       <DependentUpon>202003311937332_FixedTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004011701555_UpdatedClassForeignKeyNamingConvention.resx">
+      <DependentUpon>202004011701555_UpdatedClassForeignKeyNamingConvention.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

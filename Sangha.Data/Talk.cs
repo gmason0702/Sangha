@@ -23,17 +23,17 @@ namespace Sangha.Data
         public DateTime TalkDate { get; set; }
 
 
-        [ForeignKey(nameof(Teacher))]
+        [ForeignKey(nameof(Teachers))]
         public int? TeacherId { get; set; }
-        public virtual Teacher Teacher { get; set; }
+        public virtual Teacher Teachers { get; set; }
 
-        [ForeignKey(nameof(Retreat))]
+        [ForeignKey(nameof(Retreats))]
         public int? RetreatId { get; set; }
-        public virtual Retreat Retreat { get; set; }
+        public virtual Retreat Retreats { get; set; }
 
         // If Talk is at a Retreat, CenterId should be null; the CenterId will be provided via the CenterId property of the Retreat that the talk was given on. You could put a conditional in the setter for if RetreatID != null then CenterId = null.
-        [ForeignKey(nameof(Center))]
+        [ForeignKey(nameof(Centers))]
         public int? CenterId { get; set; }
-        public virtual Center Center { get; set; }
+        public virtual Center Centers { get; set; }
     }
 }

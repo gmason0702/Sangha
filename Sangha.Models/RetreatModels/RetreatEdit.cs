@@ -8,6 +8,7 @@ namespace Sangha.Models.RetreatModels
 {
     public class RetreatEdit
     {
+        public int RetreatId { get; set; }
         public string RetreatName { get; set; }
         public DateTimeOffset RetreatDate { get; set; }
         public int RetreatLength { get; set; }

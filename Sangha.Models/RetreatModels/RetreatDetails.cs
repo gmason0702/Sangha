@@ -17,8 +17,10 @@ namespace Sangha.Models.RetreatModels
         [Display(Name = "Length of Retreat")]
         public int RetreatLength { get; set; }
         [Display(Name = "Teacher(s)")]
-        public ICollection<Teacher> Teacher { get; set; }
-        public ICollection<Talk> Talk { get; set; }
+        public ICollection<Teacher> Teachers { get; set; }
+        public ICollection<Talk> Talks { get; set; }
+        public int? CenterId { get; set; }
+        public string CenterName { get; set; }
         public Center Center { get; set; }
     }
 }

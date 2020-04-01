@@ -24,10 +24,12 @@ namespace Sangha.Data
         //[ForeignKey(nameof(Talks))]
         //public int? TalkId { get; set; }
         public virtual ICollection<Talk> Talks { get; set; }
+        public int? TeacherId { get; set; }
+        public virtual ICollection<Teacher> Teachers { get; set; }
 
-        [ForeignKey(nameof(Center))]
+        [ForeignKey(nameof(Centers))]
         public int? CenterId { get; set; }
-        public virtual Center Center { get; set; }
+        public virtual Center Centers { get; set; }
         //public virtual ICollection<RetreatRating> Ratings { get; set; }
         
     }

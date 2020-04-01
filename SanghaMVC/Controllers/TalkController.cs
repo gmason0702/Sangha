@@ -1,108 +1,128 @@
-﻿//using Microsoft.AspNet.Identity;
-//using Sangha.Models.TalkModels;
-//using Sangha.Services;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Web;
-//using System.Web.Mvc;
+﻿using Microsoft.AspNet.Identity;
+using Sangha.Models.TalkModels;
+using Sangha.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
-//namespace SanghaMVC.Controllers
-//{
-//    public class TalkController : Controller
-//    {
-//        // GET: Talk
-//        public ActionResult Index()
-//        {
-//            var userId = Guid.Parse(User.Identity.GetUserId());
-//            var service = new TalkService(userId);
-//            var model = service.GetTalks();
-//            return View(model);
-//        }
+namespace SanghaMVC.Controllers
+{
+    public class TalkController : Controller
+    {
+        // GET: Talk
+        public ActionResult Index()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new TalkService(userId);
+            var model = service.GetTalks();
+            return View(model);
+        }
 
-//        // GET: Talk/Details/5
-//        public ActionResult Details(int id)
-//        {
-//            return View();
-//        }
+        // GET: Talk/Details/5
+        public ActionResult Details(int id)
+        {
+            var svc = CreateTalkService();
+            var model = svc.GetTalkById(id);
 
-//        // GET: Talk/Create
-//        public ActionResult Create()
-//        {
-//            return View();
-//        }
+            return View(model);
+        }
 
-//        // POST: Talk/Create
-//        [HttpPost]
-//        [ValidateAntiForgeryToken]
-//        public ActionResult Create(TalkCreate model)
-//        {
+        // GET: Talk/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
 
-//            // TODO: Add insert logic here
-//            if (!ModelState.IsValid) return View(model);
+        // POST: Talk/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(TalkCreate model)
+        {
 
-//            var service = CreateTalkService();
-//            if (service.CreateTalk(model))
-//            {
-//                TempData["SaveResult"] = "Your talk was created.";
-//                return RedirectToAction("Index");
-//            }
-//            ModelState.AddModelError("", "Talk could not be created.");
-//            return View(model);
+            // TODO: Add insert logic here
+            if (!ModelState.IsValid) return View(model);
 
+            var service = CreateTalkService();
+            if (service.CreateTalk(model))
+            {
+                TempData["SaveResult"] = "Your talk was created.";
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "Talk could not be created.");
+            return View(model);
+        }
 
+        // GET: Talk/Edit/5
+        public ActionResult Edit(int id)
+        {
+            var service = CreateTalkService();
+            var detail = service.GetTalkById(id);
+            var model =
+                new TalkEdit
+                {
+                    TalkId = detail.TalkId,
+                    Name = detail.Name,
+                    Teacher = detail.Teacher,
+                    Topic = detail.Topic,
+                    TalkLength=detail.TalkLength,
+                    TalkDate=detail.TalkDate,
+                    IsGuided=detail.IsGuided
+                };
+            return View(model);
+        }
 
-//        }
+        // POST: Talk/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, TalkEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
 
-//        // GET: Talk/Edit/5
-//        public ActionResult Edit(int id)
-//        {
-//            return View();
-//        }
+            if (model.TalkId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+            var service = CreateTalkService();
+            if (service.UpdateTalk(model))
+            {
+                TempData["SaveResult"] = "Your note was updated.";
+                return RedirectToAction("Index");
+            }
 
-//        // POST: Talk/Edit/5
-//        [HttpPost]
-//        public ActionResult Edit(int id, FormCollection collection)
-//        {
-//            try
-//            {
-//                // TODO: Add update logic here
+            ModelState.AddModelError("", "Your note could not be updated.");
+            return View(model);
+        }
 
-//                return RedirectToAction("Index");
-//            }
-//            catch
-//            {
-//                return View();
-//            }
-//        }
+        // GET: Talk/Delete/5
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateTalkService();
+            var model = svc.GetTalkById(id);
 
-//        // GET: Talk/Delete/5
-//        public ActionResult Delete(int id)
-//        {
-//            return View();
-//        }
+            return View(model);
+        }
 
-//        // POST: Talk/Delete/5
-//        [HttpPost]
-//        public ActionResult Delete(int id, FormCollection collection)
-//        {
-//            try
-//            {
-//                // TODO: Add delete logic here
+        // POST: Talk/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateTalkService();
+            service.DeleteTalk(id);
+            TempData["SaveResult"] = "Your note was deleted.";
 
-//                return RedirectToAction("Index");
-//            }
-//            catch
-//            {
-//                return View();
-//            }
-//        }
+            return RedirectToAction("Index");
+        }
 
-//        private TalkService CreateTalkService()
-//        {
-//            var userId = Guid.Parse(User.Identity.GetUserId());
-//            var service = new TalkService(userId);
-//            return service;
-//        }
-//    }
-//}
+        private TalkService CreateTalkService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new TalkService(userId);
+            return service;
+        }
+    }
+}

@@ -9,6 +9,7 @@ namespace Sangha.Models.TeacherModels
 {
     public class TeacherListItem
     {
+        public int TeacherId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string FullName => $"{FirstName} {LastName}";

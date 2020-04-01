@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
-using Sangha.Models.RetreatModels;
+using Sangha.Models.CenterModels;
 using Sangha.Services;
 using System;
 using System.Collections.Generic;
@@ -9,18 +9,18 @@ using System.Web.Mvc;
 
 namespace SanghaMVC.Controllers
 {
-    public class RetreatController : Controller
+    public class CenterController : Controller
     {
-        // GET: Retreat
+        // GET: Center
         public ActionResult Index()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new RetreatService(userId);
-            var model = service.GetRetreats();
+            var service = new CenterService(userId);
+            var model = service.GetCenters();
             return View(model);
         }
 
-        //GET:Create Retreat
+        //GET:Create Center
         public ActionResult Create()
         {
             return View();
@@ -28,13 +28,13 @@ namespace SanghaMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(RetreatCreate model)
+        public ActionResult Create(CenterCreate model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            var service = CreateRetreatService();
+            var service = CreateCenterService();
 
-            if (service.CreateRetreat(model))
+            if (service.CreateCenter(model))
             {
                 TempData["SaveResult"] = "Your note was created.";
                 return RedirectToAction("Index");
@@ -46,39 +46,40 @@ namespace SanghaMVC.Controllers
 
         public ActionResult Details(int id)
         {
-            var svc = CreateRetreatService();
-            var model = svc.GetRetreatById(id);
+            var svc = CreateCenterService();
+            var model = svc.GetCenterById(id);
 
             return View(model);
         }
 
         public ActionResult Edit(int id)
         {
-            var service = CreateRetreatService();
-            var detail = service.GetRetreatById(id);
+            var service = CreateCenterService();
+            var detail = service.GetCenterById(id);
             var model =
-                new RetreatEdit
+                new CenterEdit
                 {
-                    RetreatName = detail.RetreatName,
-                    RetreatDate = detail.RetreatDate,
-                    RetreatLength = detail.RetreatLength
+                    CenterId = detail.CenterId,
+                    Name = detail.Name,
+                    City = detail.City,
+                    State=detail.State
                 };
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, RetreatEdit model)
+        public ActionResult Edit(int id, CenterEdit model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (model.RetreatId != id)
+            if (model.CenterId != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
             }
-            var service = CreateRetreatService();
-            if (service.UpdateRetreat(model))
+            var service = CreateCenterService();
+            if (service.UpdateCenter(model))
             {
                 TempData["SaveResult"] = "Your note was updated.";
                 return RedirectToAction("Index");
@@ -91,8 +92,8 @@ namespace SanghaMVC.Controllers
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
-            var svc = CreateRetreatService();
-            var model = svc.GetRetreatById(id);
+            var svc = CreateCenterService();
+            var model = svc.GetCenterById(id);
 
             return View(model);
         }
@@ -101,18 +102,17 @@ namespace SanghaMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeletePost(int id)
         {
-            var service = CreateRetreatService();
-            service.DeleteRetreat(id);
+            var service = CreateCenterService();
+            service.DeleteCenter(id);
             TempData["SaveResult"] = "Your note was deleted.";
 
             return RedirectToAction("Index");
         }
 
-
-        private RetreatService CreateRetreatService()
+        private CenterService CreateCenterService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new RetreatService(userId);
+            var service = new CenterService(userId);
             return service;
         }
     }

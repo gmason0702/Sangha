@@ -8,6 +8,7 @@ namespace Sangha.Models.CenterModels
 {
     public class CenterEdit
     {
+        public int CenterId { get; set; }
         public string Name { get; set; }
         public string City { get; set; }
         public string State { get; set; }

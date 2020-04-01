@@ -184,6 +184,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CenterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RetreatController.cs" />
@@ -260,6 +261,20 @@
     <Content Include="Views\Teacher\Index.cshtml" />
     <Content Include="Views\Retreat\Index.cshtml" />
     <Content Include="Views\Retreat\Create.cshtml" />
+    <Content Include="Views\Center\Index.cshtml" />
+    <Content Include="Views\Center\Create.cshtml" />
+    <Content Include="Views\Center\Details.cshtml" />
+    <Content Include="Views\Center\Edit.cshtml" />
+    <Content Include="Views\Talk\Edit.cshtml" />
+    <Content Include="Views\Retreat\Edit.cshtml" />
+    <Content Include="Views\Retreat\Details.cshtml" />
+    <Content Include="Views\Talk\Details.cshtml" />
+    <Content Include="Views\Teacher\Details.cshtml" />
+    <Content Include="Views\Teacher\Edit.cshtml" />
+    <Content Include="Views\Talk\Delete.cshtml" />
+    <Content Include="Views\Retreat\Delete.cshtml" />
+    <Content Include="Views\Center\Delete.cshtml" />
+    <Content Include="Views\Teacher\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

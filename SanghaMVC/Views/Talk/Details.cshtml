@@ -1,0 +1,90 @@
+﻿@model Sangha.Models.TalkModels.TalkDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TalkDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TalkId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TalkId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teacher)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teacher)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TeacherId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeacherId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Topic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Topic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TalkLength)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TalkLength)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TalkDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TalkDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsGuided)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsGuided)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {id = Model.TalkId}) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

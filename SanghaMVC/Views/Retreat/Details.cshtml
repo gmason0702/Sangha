@@ -1,0 +1,58 @@
+﻿@model Sangha.Models.RetreatModels.RetreatDetails
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RetreatDetails</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RetreatName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RetreatName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RetreatDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RetreatDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RetreatLength)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RetreatLength)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CenterId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CenterId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CenterName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CenterName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

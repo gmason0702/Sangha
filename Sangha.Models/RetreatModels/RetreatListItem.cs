@@ -18,7 +18,10 @@ namespace Sangha.Models.RetreatModels
         [Display(Name = "Length of Retreat")]
         public int RetreatLength { get; set; }
         [Display(Name = "Teacher(s)")]
-        public ICollection<Teacher> Teacher { get; set; }
+
+        public int TeacherId { get; set; }
+        public string Teacher { get; set; }
+        public ICollection<Teacher> Teachers { get; set; }
         public double AvgRating
         {
             get

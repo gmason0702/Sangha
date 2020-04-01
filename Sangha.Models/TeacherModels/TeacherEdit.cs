@@ -8,6 +8,7 @@ namespace Sangha.Models.TeacherModels
 {
     public class TeacherEdit
     {
+        public int TeacherId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
     }

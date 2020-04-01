@@ -25,7 +25,9 @@ namespace Sangha.Services
                     //OwnerId = _userId,
                     Name = model.Name,
                     Description = model.Description,
+                    Topic=model.Topic,
                     TeacherId = model.TeacherId,
+                    //Teachers = model.Teacher,
                     TalkLength = model.TalkLength,
                     TalkDate = model.TalkDate,
                     RetreatId = model.RetreatId
@@ -50,7 +52,8 @@ namespace Sangha.Services
                                 {
                                     TalkId = e.TalkId,
                                     Name = e.Name,
-                                    Teacher = e.Teacher,
+                                    TeacherId=e.TeacherId,
+                                    Teacher = e.Teachers.FullName,
                                     Topic = e.Topic,
                                     TalkLength = e.TalkLength,
                                     RetreatId = e.RetreatId
@@ -68,19 +71,51 @@ namespace Sangha.Services
                     ctx
                         .Talks
                         .Single(e => e.TalkId == Id);
-                return
+                 return
                      new TalkDetail
                      {
                          TalkId = entity.TalkId,
                          Name = entity.Name,
-                         Teacher = entity.Teacher,
                          Topic = entity.Topic,
                          Description = entity.Description,
                          TalkLength = entity.TalkLength,
                          TalkDate = entity.TalkDate,
-                         IsGuided = entity.IsGuided
-
+                         IsGuided = entity.IsGuided,
+                         TeacherId = entity.TeacherId,
+                         Teacher=entity.Teachers.FullName
                      };
+            }
+        }
+        public bool UpdateTalk(TalkEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Talks
+                        .Single(e => e.TalkId == model.TalkId);
+                entity.Name = model.Name;
+                entity.TeacherId = model.TeacherId;
+                //entity.Teacher = model.Teachers.FullName;
+                entity.Topic = model.Topic;
+                entity.TalkLength = model.TalkLength;
+                entity.TalkDate = model.TalkDate;
+                entity.IsGuided = model.IsGuided;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteTalk(int talkId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Talks
+                        .Single(e => e.TalkId == talkId);
+                ctx.Talks.Remove(entity);
+                return ctx.SaveChanges() == 1;
             }
         }
     }
