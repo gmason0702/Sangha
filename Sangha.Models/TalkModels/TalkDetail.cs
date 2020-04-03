@@ -14,6 +14,7 @@ namespace Sangha.Models.TalkModels
         public string Name { get; set; }
         public string Teacher { get; set; }
         public int? TeacherId { get; set; }
+        public int? RetreatId { get; set; }
         public string Topic { get; set; }
         public string Description { get; set; }
         public TimeSpan TalkLength { get; set; }

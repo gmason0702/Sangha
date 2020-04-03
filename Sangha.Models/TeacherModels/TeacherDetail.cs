@@ -1,4 +1,5 @@
 ﻿using Sangha.Data;
+using Sangha.Models.TalkModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,13 @@ namespace Sangha.Models.TeacherModels
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string FullName => $"{FirstName} {LastName}";
-        public ICollection<Talk> Talks { get; set; }
+        public int TalkId { get; set; }
+        public string Name { get; set; }
+
+        public string Topic { get; set; }
+        public DateTime TalkLength { get; set; }
+        public int RetreatId { get; set; }
+        public List<TalkDetail> Talks { get; set; }
 
         public ICollection<Retreat> Retreats { get; set; }
 

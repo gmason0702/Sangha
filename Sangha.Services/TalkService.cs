@@ -1,4 +1,5 @@
-﻿using Sangha.Data;
+﻿using OpenQA.Selenium.Chrome;
+using Sangha.Data;
 using Sangha.Models.TalkModels;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace Sangha.Services
     public class TalkService
     {
         private readonly Guid _userId;
-
+        public TalkService() { }
         public TalkService(Guid userId)
         {
             _userId = userId;
@@ -53,7 +54,7 @@ namespace Sangha.Services
                                     TalkId = e.TalkId,
                                     Name = e.Name,
                                     TeacherId=e.TeacherId,
-                                    Teacher = e.Teachers.FullName,
+                                    //Teacher = e.Teachers.FullName,
                                     Topic = e.Topic,
                                     TalkLength = e.TalkLength,
                                     RetreatId = e.RetreatId
@@ -86,6 +87,28 @@ namespace Sangha.Services
                      };
             }
         }
+        //public IEnumerable<string> ConvertTalkCollectionToString(ICollection<Talk> talks)
+        //{
+        //    var query = talks.Select(
+        //        e =>
+        //            new TalkListItem
+        //            {
+        //                TalkId = e.TalkId,
+        //                Name = e.Name,
+        //                TeacherId = e.TeacherId,
+        //                Topic = e.Topic,
+        //                TalkLength = e.TalkLength,
+        //                RetreatId = e.RetreatId
+        //            }
+        //            );
+        //    query.ToArray();
+        //    List<string> talkStrings = new List<string>();
+        //    foreach (TalkListItem item in query)
+        //    {
+        //        talkStrings.Add($"{item.Name}, (Teacher Id: {item.TeacherId}),(Topic: {item.Topic}),(Retreat ID: {item.RetreatId})");
+        //    }
+        //    return talkStrings;
+        //}
         public bool UpdateTalk(TalkEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -118,5 +141,24 @@ namespace Sangha.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        //public IEnumerable<TalkListItem> GetTalkScraper()
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        using (var driver = new ChromeDriver())
+        //        {
+        //            driver.Navigate().GoToUrl("https://dharmaseed.org/talks/");
+        //            var talkDate = (driver.FindElementByXPath("//div[@class='talklist']/table/tbody/tr/td").Text).ToString();
+        //            var talkName = (driver.FindElementByXPath("//div[@class='talklist']/table/tbody/tr/td/a[@class='talkteacher']").Text).ToString();
+        //            var talkLength = (driver.FindElementByXPath("//div[@class='talklist']/table/tbody/tr/td/i").Text).ToString();
+        //            var talkTeacher = (driver.FindElementByXPath("//div[@class='talklist']/table/tbody/tr/td/i/a[@class='talkteacher']").Text).ToString();
+        //            var talkDescription = (driver.FindElementByXPath("//div[@class='talklist']/table/tbody/tr/td").Text).ToString();
+        //            var talkCenter = (driver.FindElementByXPath("//div[@class='talklist']/table/tbody/tr/td/a[@class='quietlink']").Text).ToString();
+
+                   
+        //        }
+        //    }
+        //}
     }
 }

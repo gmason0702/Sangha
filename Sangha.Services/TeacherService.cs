@@ -1,4 +1,5 @@
 ﻿using Sangha.Data;
+using Sangha.Models.TalkModels;
 using Sangha.Models.TeacherModels;
 using System;
 using System.Collections.Generic;
@@ -45,7 +46,7 @@ namespace Sangha.Services
                             e =>
                                 new TeacherListItem
                                 {
-                                    TeacherId=e.TeacherId,
+                                    TeacherId = e.TeacherId,
                                     FirstName = e.FirstName,
                                     LastName = e.LastName,
                                     Talks = e.Talks,
@@ -61,23 +62,50 @@ namespace Sangha.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
+                //var talkService = new TalkService(); from TALKSERVICE METHOD CONVERTALKCOLLECTIONTOSTRING
                 var entity =
                     ctx
                         .Teachers
                         .Single(e => e.TeacherId == id);
+                //var query = ctx.Talks.Include("Talks").ToList();
+                //var teacherTalks = entity.Talks.ToList();
+                var teacherTalks =
+                    ctx.Talks
+                        .Where(talk => talk.TeacherId == entity.TeacherId)
+                        .Select(talk => new TalkDetail
+                        {
+                            TalkId = talk.TalkId,
+                            Name = talk.Name,
+                            TeacherId = talk.TeacherId,
+                            //Teacher = e.Teachers.FullName,
+                            Topic = talk.Topic,
+                            TalkLength = talk.TalkLength,
+                            RetreatId = talk.RetreatId
+                        }).ToList();
                 return
                     new TeacherDetail
                     {
-                        TeacherId=entity.TeacherId,
+                        TeacherId = entity.TeacherId,
                         FirstName = entity.FirstName,
                         LastName = entity.LastName,
-                        Talks = entity.Talks,
                         //Retreats = entity.Retreats,
-                        //Centers = entity.Centers
-
+                        //Centers = entity.Centers,
+                        //Talks = teacherTalks.Select(p => new TalkListItem { Name = p.Name, Topic = p.Topic }.ToList)
+                        //Talks = talkService.ConvertTalkCollectionToString(entity.Talks)  METHOD FROM TALSERVICE
+                        Talks = teacherTalks
                     };
             }
         }
+        //public ICollection<Talk> GetTalks()
+        //{
+        //    var talks = new List<string>();
+        //    foreach (var talk in talks)
+        //    {
+        //        talks = string.Join(",", talks.ToArray())
+        //    }
+
+        //}
+
         public bool UpdateTeacher(TeacherEdit model)
         {
             using (var ctx = new ApplicationDbContext())
