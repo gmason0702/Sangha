@@ -13,7 +13,9 @@ namespace Sangha.Data
         [Key]
         public int RetreatId { get; set; }
         public string RetreatName { get; set; }
-        public DateTimeOffset RetreatDate { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime RetreatDate { get; set; }
         public int RetreatLength { get; set; }
         public double AvgRating { get; set; }
 

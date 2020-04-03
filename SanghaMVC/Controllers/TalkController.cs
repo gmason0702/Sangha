@@ -12,11 +12,15 @@ namespace SanghaMVC.Controllers
     public class TalkController : Controller
     {
         // GET: Talk
-        public ActionResult Index()
+        public ActionResult Index(string topic, string searchString)
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new TalkService(userId);
-            var model = service.GetTalks();
+            var model = service.GetTalks();            
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(s => s.Name.Contains(searchString));
+            }
             return View(model);
         }
 

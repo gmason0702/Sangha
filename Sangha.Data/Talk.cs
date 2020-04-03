@@ -20,6 +20,8 @@ namespace Sangha.Data
         public string Topic { get; set; }
         public bool IsGuided { get; set; }
         public TimeSpan TalkLength { get; set; }
+
+        [DataType(DataType.Date)]
         public DateTime TalkDate { get; set; }
 
 

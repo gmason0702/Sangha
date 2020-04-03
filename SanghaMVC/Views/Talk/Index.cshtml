@@ -8,50 +8,60 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TalkId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Topic)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Teacher)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TalkLength)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.TalkId)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Topic)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Teacher)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.TalkLength)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.TalkId }) |
-        @Html.ActionLink("Details", "Details", new { id = item.TalkId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.TalkId })
-    </td>
-</tr>
+    @using (Html.BeginForm())
+    {
+    <p>
+        Title: @Html.TextBox("SearchString") <br />
+        <input type="submit" value="Filter" />
+    </p>
 }
 
-</table>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TalkId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Topic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teacher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TalkLength)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TalkId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Topic)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Teacher)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TalkLength)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TalkId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.TalkId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TalkId })
+                </td>
+            </tr>
+        }
+
+    </table>

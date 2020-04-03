@@ -3,14 +3,21 @@
 @{
     ViewBag.Title = "Edit";
 }
-
+@*<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#TalkDate").datepicker();
+    });
+</script>*@
 <h2>Edit</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>TalkEdit</h4>
         <hr />

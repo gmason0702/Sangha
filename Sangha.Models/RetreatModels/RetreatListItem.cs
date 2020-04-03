@@ -14,7 +14,7 @@ namespace Sangha.Models.RetreatModels
         [Display(Name = "Retreat Name")]
         public string RetreatName { get; set; }
         [Display(Name = "Start Date")]
-        public DateTimeOffset RetreatDate { get; set; }
+        public DateTime RetreatDate { get; set; }
         [Display(Name = "Length of Retreat")]
         public int RetreatLength { get; set; }
         [Display(Name = "Teacher(s)")]
