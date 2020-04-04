@@ -19,6 +19,8 @@
             type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/DatePickerReady.js")"
             type="text/javascript"></script>
+    <link href="~/Content/Style.css" rel="stylesheet" type="text/css" />
+
 
 </head>
 <body>
@@ -35,8 +37,15 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Talks", "Index", "Talk")</li>
+                        <li>@Html.ActionLink("Teachers", "Index", "Teacher")</li>
+                        <li>@Html.ActionLink("Retreats", "Index", "Retreat")</li>
+                        <li>@Html.ActionLink("Centers", "Index", "Center")</li>
+
+                    }
+                   
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -47,6 +56,8 @@
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - The Sangha</p>
+            <p>@Html.ActionLink("About", "About", "Home")</p>
+            <p>@Html.ActionLink("Contact", "Contact", "Home")</p>
         </footer>
     </div>
 

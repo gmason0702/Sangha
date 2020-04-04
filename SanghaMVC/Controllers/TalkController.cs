@@ -11,16 +11,48 @@ namespace SanghaMVC.Controllers
 {
     public class TalkController : Controller
     {
+
         // GET: Talk
-        public ActionResult Index(string topic, string searchString)
+        public ActionResult Index(string sortOrder, string searchString)
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new TalkService(userId);
-            var model = service.GetTalks();            
+            var model = service.GetTalks();
+            ViewBag.TopicSort = sortOrder == "topic_desc" ? "topic" : "topic_desc";
+            ViewBag.TeacherSort = sortOrder == "teacher_desc" ? "teacher" : "teacher_desc";
+            ViewBag.Name = sortOrder == "name_desc" ? "name" : "name_desc";
+            ViewBag.IsGuided = sortOrder == "isGuided_desc" ? "isGuided" : "isGuided_desc";
+            ViewBag.TalkLength = sortOrder == "talkLength_desc" ? "talkLength" : "talkLength_desc";
             if (!String.IsNullOrEmpty(searchString))
             {
-                model = model.Where(s => s.Name.Contains(searchString));
+                model = model.Where(s => s.Name.Contains(searchString) || s.Topic == searchString);
             }
+            //if (!String.IsNullOrEmpty(topicSearch))
+            //{
+            //    model = model.Where(s => s.Topic==topicSearch);
+            //}
+
+            switch (sortOrder)
+            {
+                case "topic":
+                    model = model.OrderBy(s => s.Topic);
+                    break;
+                case "teacher":
+                    model = model.OrderBy(s => s.Teacher);
+                    break;
+                case "name":
+                    model = model.OrderBy(s => s.Name);
+                    break;
+                case "isGuided":
+                    model = model.OrderBy(s => s.isGuided);
+                    break;
+                case "talkLength":
+                    model = model.OrderBy(s => s.TalkLength);
+                    break;
+                default:
+                    break;
+            }
+
             return View(model);
         }
 

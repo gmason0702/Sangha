@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sangha.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Sangha.Models.TalkModels
         public string Description { get; set; }
         public string Topic { get; set; }
         public int? TeacherId { get; set; }
-        public string Teacher { get; set; }
+        public Teacher TeacherName { get; set; }
         public TimeSpan TalkLength { get; set; }
         public DateTime TalkDate { get; set; }
         public bool IsGuided { get; set; }

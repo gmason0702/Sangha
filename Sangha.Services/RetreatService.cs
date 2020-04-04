@@ -27,7 +27,7 @@ namespace Sangha.Services
                     RetreatLength = model.RetreatLength,
                     //TeacherId = model.TeacherId,
                     CenterId=model.CenterId,
-                    //CenterName = model.Center.Name
+                    //Centers = model.CenterName
                 };
 
             using (var ctx = new ApplicationDbContext())

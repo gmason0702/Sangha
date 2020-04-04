@@ -8,50 +8,62 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.RetreatId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RetreatName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RetreatDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RetreatLength)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AvgRating)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.RetreatId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RetreatName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RetreatDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RetreatLength)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AvgRating)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RetreatId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RetreatId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RetreatId  })
-        </td>
-    </tr>
+    @using (Html.BeginForm("Index", "retreat", FormMethod.Get))
+    {
+    <p>
+        Search for Retreat: @Html.TextBox("SearchString") <br />
+        <input type="submit" value="Filter" />
+    </p>
 }
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RetreatId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RetreatName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RetreatDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RetreatLength)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvgRating)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RetreatId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RetreatName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RetreatDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RetreatLength)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AvgRating)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.RetreatId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.RetreatId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.RetreatId })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>

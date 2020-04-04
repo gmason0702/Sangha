@@ -12,11 +12,15 @@ namespace SanghaMVC.Controllers
     public class RetreatController : Controller
     {
         // GET: Retreat
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new RetreatService(userId);
             var model = service.GetRetreats();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(s => s.RetreatName.Contains(searchString));
+            }
             return View(model);
         }
 

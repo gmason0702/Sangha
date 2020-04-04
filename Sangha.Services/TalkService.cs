@@ -23,12 +23,11 @@ namespace Sangha.Services
             var entity =
                 new Talk()
                 {
-                    //OwnerId = _userId,
                     Name = model.Name,
                     Description = model.Description,
                     Topic=model.Topic,
                     TeacherId = model.TeacherId,
-                    //Teachers = model.Teacher,
+                    //Teachers=model.TeacherName.FullName,
                     TalkLength = model.TalkLength,
                     TalkDate = model.TalkDate,
                     RetreatId = model.RetreatId
@@ -54,7 +53,7 @@ namespace Sangha.Services
                                     TalkId = e.TalkId,
                                     Name = e.Name,
                                     TeacherId=e.TeacherId,
-                                    //Teacher = e.Teachers.FullName,
+                                    Teacher = e.Teachers.FirstName + " " + e.Teachers.LastName,
                                     Topic = e.Topic,
                                     TalkLength = e.TalkLength,
                                     RetreatId = e.RetreatId
