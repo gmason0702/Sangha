@@ -13,6 +13,8 @@ namespace Sangha.Models.RetreatModels
 
         public DateTime RetreatDate { get; set; }
         public int RetreatLength { get; set; }
+        public string Description { get; set; }
+
         public ICollection<Teacher> Teacher { get; set; }
         public int CenterId { get; set; }
         public string CenterName { get; set; }

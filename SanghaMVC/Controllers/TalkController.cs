@@ -37,19 +37,35 @@ namespace SanghaMVC.Controllers
                 case "topic":
                     model = model.OrderBy(s => s.Topic);
                     break;
+                case "topic_desc":
+                    model = model.OrderByDescending(s => s.Topic);
+                    break;
                 case "teacher":
                     model = model.OrderBy(s => s.Teacher);
+                    break;
+                case "teacher_desc":
+                    model = model.OrderByDescending(s => s.Teacher);
                     break;
                 case "name":
                     model = model.OrderBy(s => s.Name);
                     break;
+                case "name_desc":
+                    model = model.OrderByDescending(s => s.Name);
+                    break;
                 case "isGuided":
-                    model = model.OrderBy(s => s.isGuided);
+                    model = model.OrderBy(s => s.IsGuided);
+                    break;
+                case "isGuided_desc":
+                    model = model.OrderByDescending(s => s.IsGuided);
                     break;
                 case "talkLength":
                     model = model.OrderBy(s => s.TalkLength);
                     break;
+                case "talkLength_desc":
+                    model = model.OrderByDescending(s => s.TalkLength);
+                    break;
                 default:
+                    model = model.OrderBy(s => s.TeacherId);
                     break;
             }
 

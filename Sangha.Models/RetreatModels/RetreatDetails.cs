@@ -12,10 +12,15 @@ namespace Sangha.Models.RetreatModels
     {
         [Display(Name = "Retreat Name")]
         public string RetreatName { get; set; }
+
         [Display(Name = "Start Date")]
         public DateTime RetreatDate { get; set; }
+
         [Display(Name = "Length of Retreat")]
         public int RetreatLength { get; set; }
+        public string Description { get; set; }
+
+
         [Display(Name = "Teacher(s)")]
         public ICollection<Teacher> Teachers { get; set; }
         public ICollection<Talk> Talks { get; set; }

@@ -17,6 +17,7 @@ namespace Sangha.Data
         [DataType(DataType.Date)]
         public DateTime RetreatDate { get; set; }
         public int RetreatLength { get; set; }
+        public string Description { get; set; }
         public double AvgRating { get; set; }
 
         //[ForeignKey(nameof(Teacher))]

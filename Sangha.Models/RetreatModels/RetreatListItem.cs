@@ -1,6 +1,7 @@
 ﻿using Sangha.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,19 @@ namespace Sangha.Models.RetreatModels
 {
     public class RetreatListItem
     {
+        [DisplayName("ID")]
         public int RetreatId { get; set; }
+
         [Display(Name = "Retreat Name")]
         public string RetreatName { get; set; }
+
         [Display(Name = "Start Date")]
         public DateTime RetreatDate { get; set; }
+
         [Display(Name = "Length of Retreat")]
         public int RetreatLength { get; set; }
-        [Display(Name = "Teacher(s)")]
 
+        [Display(Name = "Teacher(s)")]
         public int TeacherId { get; set; }
         public string Teacher { get; set; }
         public ICollection<Teacher> Teachers { get; set; }

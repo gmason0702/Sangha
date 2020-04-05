@@ -18,6 +18,6 @@ namespace Sangha.Models.TalkModels
         public string Topic { get; set; }
         public TimeSpan TalkLength { get; set; }
         public int? RetreatId { get; set; }
-        public bool isGuided { get; set; }
+        public bool IsGuided { get; set; }
     }
 }

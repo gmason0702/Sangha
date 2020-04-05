@@ -30,7 +30,9 @@ namespace Sangha.Services
                     //Teachers=model.TeacherName.FullName,
                     TalkLength = model.TalkLength,
                     TalkDate = model.TalkDate,
-                    RetreatId = model.RetreatId
+                    IsGuided=model.IsGuided,
+                    RetreatId = model.RetreatId,
+                    CenterId=model.CenterId
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -56,6 +58,7 @@ namespace Sangha.Services
                                     Teacher = e.Teachers.FirstName + " " + e.Teachers.LastName,
                                     Topic = e.Topic,
                                     TalkLength = e.TalkLength,
+                                    IsGuided=e.IsGuided,
                                     RetreatId = e.RetreatId
                                 }
                             );

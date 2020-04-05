@@ -27,6 +27,7 @@ namespace Sangha.Services
                     RetreatLength = model.RetreatLength,
                     //TeacherId = model.TeacherId,
                     CenterId=model.CenterId,
+                    Description=model.Description
                     //Centers = model.CenterName
                 };
 
@@ -76,6 +77,7 @@ namespace Sangha.Services
                         RetreatDate = entity.RetreatDate,
                         RetreatLength = entity.RetreatLength,
                         //Teacher = entity.Teacher,
+                        Description=entity.Description,
                         CenterId=entity.CenterId,
                         CenterName = entity.Centers.Name
                     };
@@ -92,6 +94,7 @@ namespace Sangha.Services
                 entity.RetreatName = model.RetreatName;
                 entity.RetreatDate = model.RetreatDate;
                 entity.RetreatLength = model.RetreatLength;
+                entity.Description = model.Description;
 
                 return ctx.SaveChanges() == 1;
             }

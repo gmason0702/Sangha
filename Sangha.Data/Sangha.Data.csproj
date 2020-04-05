@@ -73,6 +73,14 @@
     <Compile Include="Migrations\202004031423213_updatedDateTimeAttributes.Designer.cs">
       <DependentUpon>202004031423213_updatedDateTimeAttributes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004042309380_AddedDescriptionToRetreat.cs" />
+    <Compile Include="Migrations\202004042309380_AddedDescriptionToRetreat.Designer.cs">
+      <DependentUpon>202004042309380_AddedDescriptionToRetreat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004042341208_AddedStateEnumToCenter.cs" />
+    <Compile Include="Migrations\202004042341208_AddedStateEnumToCenter.Designer.cs">
+      <DependentUpon>202004042341208_AddedStateEnumToCenter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rating.cs" />
@@ -94,6 +102,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004031423213_updatedDateTimeAttributes.resx">
       <DependentUpon>202004031423213_updatedDateTimeAttributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004042309380_AddedDescriptionToRetreat.resx">
+      <DependentUpon>202004042309380_AddedDescriptionToRetreat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004042341208_AddedStateEnumToCenter.resx">
+      <DependentUpon>202004042341208_AddedStateEnumToCenter.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

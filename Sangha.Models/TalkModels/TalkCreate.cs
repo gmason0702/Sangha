@@ -18,5 +18,6 @@ namespace Sangha.Models.TalkModels
         public DateTime TalkDate { get; set; }
         public bool IsGuided { get; set; }
         public int? RetreatId { get; set; }
+        public int? CenterId { get; set; }
     }
 }
