@@ -81,6 +81,10 @@
     <Compile Include="Migrations\202004042341208_AddedStateEnumToCenter.Designer.cs">
       <DependentUpon>202004042341208_AddedStateEnumToCenter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004051944251_AddedStarredBoolToNotes.cs" />
+    <Compile Include="Migrations\202004051944251_AddedStarredBoolToNotes.Designer.cs">
+      <DependentUpon>202004051944251_AddedStarredBoolToNotes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rating.cs" />
@@ -108,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004042341208_AddedStateEnumToCenter.resx">
       <DependentUpon>202004042341208_AddedStateEnumToCenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004051944251_AddedStarredBoolToNotes.resx">
+      <DependentUpon>202004051944251_AddedStarredBoolToNotes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

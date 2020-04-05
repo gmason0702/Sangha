@@ -10,7 +10,13 @@ namespace Sangha.WebAPI
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
+            GlobalConfiguration
+                .Configure(
+                x =>
+                {
+                    x.Formatters.JsonFormatter.SupportedMediaTypes.Add(new System.Net.Http.Headers.MediaTypeHeaderValue("text/html"));
+                    x.MapHttpAttributeRoutes();
+                });
             // Web API routes
             config.MapHttpAttributeRoutes();
 

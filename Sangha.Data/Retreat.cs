@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -11,13 +12,20 @@ namespace Sangha.Data
     public class Retreat
     {
         [Key]
+        [DisplayName("ID")]
         public int RetreatId { get; set; }
+
+        [DisplayName("Retreat Name")]
         public string RetreatName { get; set; }
 
+        [DisplayName("Date of Retreat")]
         [DataType(DataType.Date)]
         public DateTime RetreatDate { get; set; }
+        [DisplayName("Retreat Length(days)")]
         public int RetreatLength { get; set; }
         public string Description { get; set; }
+
+        [DisplayName("Average Rating")]
         public double AvgRating { get; set; }
 
         //[ForeignKey(nameof(Teacher))]

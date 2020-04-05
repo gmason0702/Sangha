@@ -13,6 +13,5 @@ namespace Sangha.Models.RetreatModels
         public DateTime RetreatDate { get; set; }
         public int RetreatLength { get; set; }
         public string Description { get; set; }
-
     }
 }

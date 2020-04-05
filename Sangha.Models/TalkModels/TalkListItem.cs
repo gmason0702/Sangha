@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +15,17 @@ namespace Sangha.Models.TalkModels
         public int TalkId { get; set; }
         public string Name { get; set; }
         public int? TeacherId { get; set; }
-        public string Teacher { get; set; }
+
+        [DisplayName("Teacher")]
+        public string TeacherName { get; set; }
         public string Topic { get; set; }
         public TimeSpan TalkLength { get; set; }
         public int? RetreatId { get; set; }
         public bool IsGuided { get; set; }
+        
+        [UIHint("Starred")]
+        [DisplayName("Favorite")]
+        public bool IsStarred { get; set; }
+
     }
 }

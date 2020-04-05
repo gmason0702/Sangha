@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -23,6 +24,10 @@ namespace Sangha.Data
 
         [DataType(DataType.Date)]
         public DateTime TalkDate { get; set; }
+
+        [DefaultValue(false)]
+        [DisplayName("Favorite")]
+        public bool IsStarred { get; set; }
 
 
         [ForeignKey(nameof(Teachers))]

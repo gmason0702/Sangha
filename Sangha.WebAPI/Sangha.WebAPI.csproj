@@ -171,6 +171,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\WebAPI\TalkController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -307,6 +308,14 @@
     <ProjectReference Include="..\Sangha.Data\Sangha.Data.csproj">
       <Project>{0C5A387E-1FE4-4BE7-8331-EA46DF6459A1}</Project>
       <Name>Sangha.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sangha.Models\Sangha.Models.csproj">
+      <Project>{56FBADBA-4DC6-43A2-9A60-47ECAC7DDBFE}</Project>
+      <Name>Sangha.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sangha.Services\Sangha.Services.csproj">
+      <Project>{0C8A0F6D-0145-4124-9365-B23F5A460A72}</Project>
+      <Name>Sangha.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

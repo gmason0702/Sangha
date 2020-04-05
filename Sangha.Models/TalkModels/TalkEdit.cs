@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,10 +12,13 @@ namespace Sangha.Models.TalkModels
         public int TalkId { get; set; }
         public string Name { get; set; }
         public int? TeacherId { get; set; }
-        public string Teacher { get; set; }
+
+        [DisplayName("Teacher")]
+        public string TeacherName { get; set; }
         public string Topic { get; set; }
         public TimeSpan TalkLength { get; set; }
         public DateTime TalkDate { get; set; }
         public bool IsGuided { get; set; }
+        public bool IsStarred { get; set; }
     }
 }

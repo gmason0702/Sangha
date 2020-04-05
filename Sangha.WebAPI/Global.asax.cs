@@ -18,6 +18,7 @@ namespace Sangha.WebAPI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //WebApiConfig.Register();
         }
     }
 }

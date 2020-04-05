@@ -29,8 +29,14 @@ namespace SanghaMVC.Controllers
                 case "firstNameSort":
                     model = model.OrderBy(s => s.FirstName);
                     break;
+                case "firstNameSort_desc":
+                    model = model.OrderByDescending(s => s.FirstName);
+                    break;
                 case "lastNameSort":
                     model = model.OrderBy(s => s.LastName);
+                    break;
+                case "lastNameSort_desc":
+                    model = model.OrderByDescending(s => s.LastName);
                     break;
                 default:
                     break;
@@ -48,9 +54,11 @@ namespace SanghaMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(TeacherCreate model)
         {
+
             if (!ModelState.IsValid) return View(model);
 
             var service = CreateTeacherService();
+            ViewBag.Teachers = service.GetTeachers();
 
             if (service.CreateTeacher(model))
             {

@@ -27,7 +27,6 @@ namespace Sangha.Services
                     Description = model.Description,
                     Topic=model.Topic,
                     TeacherId = model.TeacherId,
-                    //Teachers=model.TeacherName.FullName,
                     TalkLength = model.TalkLength,
                     TalkDate = model.TalkDate,
                     IsGuided=model.IsGuided,
@@ -55,11 +54,12 @@ namespace Sangha.Services
                                     TalkId = e.TalkId,
                                     Name = e.Name,
                                     TeacherId=e.TeacherId,
-                                    Teacher = e.Teachers.FirstName + " " + e.Teachers.LastName,
+                                    TeacherName = e.Teachers.FirstName + " " + e.Teachers.LastName,
                                     Topic = e.Topic,
                                     TalkLength = e.TalkLength,
                                     IsGuided=e.IsGuided,
-                                    RetreatId = e.RetreatId
+                                    IsStarred=e.IsStarred,
+                                    RetreatId = e.RetreatId,
                                 }
                             );
                 return query.ToArray();
@@ -85,7 +85,7 @@ namespace Sangha.Services
                          TalkDate = entity.TalkDate,
                          IsGuided = entity.IsGuided,
                          TeacherId = entity.TeacherId,
-                         Teacher=entity.Teachers.FullName
+                         TeacherName=entity.Teachers.FullName
                      };
             }
         }
@@ -121,11 +121,13 @@ namespace Sangha.Services
                         .Single(e => e.TalkId == model.TalkId);
                 entity.Name = model.Name;
                 entity.TeacherId = model.TeacherId;
-                //entity.Teacher = model.Teachers.FullName;
+                //entity.Teachers = model.Teacher;
                 entity.Topic = model.Topic;
                 entity.TalkLength = model.TalkLength;
                 entity.TalkDate = model.TalkDate;
                 entity.IsGuided = model.IsGuided;
+                entity.IsStarred = model.IsStarred;
+                //entity.Teachers = model.TeacherName;
 
                 return ctx.SaveChanges() == 1;
             }
