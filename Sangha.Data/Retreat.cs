@@ -18,6 +18,7 @@ namespace Sangha.Data
         [DisplayName("Retreat Name")]
         public string RetreatName { get; set; }
 
+        [DisplayFormat(DataFormatString ="{0:dd/MM/yyyy}", ApplyFormatInEditMode =true)]
         [DisplayName("Date of Retreat")]
         [DataType(DataType.Date)]
         public DateTime RetreatDate { get; set; }

@@ -30,7 +30,6 @@ namespace Sangha.Services
                     //TeacherId = model.TeacherId,
                     CenterId=model.CenterId,
                     Description=model.Description
-                    //Centers = model.CenterName
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -46,7 +45,7 @@ namespace Sangha.Services
             {
                 var query =
                     ctx
-                        .Retreats
+                        .Retreats.ToList()
                         //.Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>

@@ -6,8 +6,8 @@
     var detailModel = (RetreatDetails)ViewBag.Detail;
 }
 
-<h2>Rate @detailModel.RetreatName</h2>
-<h3>@ViewBag.Detail.City, @ViewBag.Detail.State</h3>
+<h2>@detailModel.RetreatName</h2>
+<h3>@ViewBag.Detail.RetreatDate, @ViewBag.Detail.RetreatLength days</h3>
 
 
 @using (Html.BeginForm()) 
@@ -15,7 +15,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>RetreatRatingCreate</h4>
+        @*<h4>RetreatRatingCreate</h4>*@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
