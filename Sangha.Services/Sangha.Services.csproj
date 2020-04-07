@@ -67,7 +67,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RatingService.cs" />
     <Compile Include="RetreatService.cs" />
-    <Compile Include="ScraperService.cs" />
     <Compile Include="TalkService.cs" />
     <Compile Include="TeacherService.cs" />
   </ItemGroup>
