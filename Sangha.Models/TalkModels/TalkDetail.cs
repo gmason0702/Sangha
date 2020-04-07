@@ -23,5 +23,7 @@ namespace Sangha.Models.TalkModels
         public TimeSpan TalkLength { get; set; }
         public DateTime TalkDate { get; set; }
         public bool IsGuided { get; set; }
+        public string TalkLink { get; set; }
+
     }
 }

@@ -85,6 +85,18 @@
     <Compile Include="Migrations\202004051944251_AddedStarredBoolToNotes.Designer.cs">
       <DependentUpon>202004051944251_AddedStarredBoolToNotes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004061341210_NotSureWhyImHavingToMigrateHere.cs" />
+    <Compile Include="Migrations\202004061341210_NotSureWhyImHavingToMigrateHere.Designer.cs">
+      <DependentUpon>202004061341210_NotSureWhyImHavingToMigrateHere.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004061843211_AddedAudioURLIdsToTalkEntity.cs" />
+    <Compile Include="Migrations\202004061843211_AddedAudioURLIdsToTalkEntity.Designer.cs">
+      <DependentUpon>202004061843211_AddedAudioURLIdsToTalkEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004071832360_AddedRatingModelsServices.cs" />
+    <Compile Include="Migrations\202004071832360_AddedRatingModelsServices.Designer.cs">
+      <DependentUpon>202004071832360_AddedRatingModelsServices.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rating.cs" />
@@ -115,6 +127,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004051944251_AddedStarredBoolToNotes.resx">
       <DependentUpon>202004051944251_AddedStarredBoolToNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004061341210_NotSureWhyImHavingToMigrateHere.resx">
+      <DependentUpon>202004061341210_NotSureWhyImHavingToMigrateHere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004061843211_AddedAudioURLIdsToTalkEntity.resx">
+      <DependentUpon>202004061843211_AddedAudioURLIdsToTalkEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004071832360_AddedRatingModelsServices.resx">
+      <DependentUpon>202004071832360_AddedRatingModelsServices.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

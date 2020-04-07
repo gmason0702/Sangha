@@ -1,4 +1,6 @@
 ﻿using Sangha.Data;
+using Sangha.Models.RatingModels.Retreat;
+using Sangha.Models.TalkModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,6 +12,7 @@ namespace Sangha.Models.RetreatModels
 {
     public class RetreatDetails
     {
+        public int RetreatId { get; set; }
         [Display(Name = "Retreat Name")]
         public string RetreatName { get; set; }
 
@@ -23,7 +26,9 @@ namespace Sangha.Models.RetreatModels
 
         [Display(Name = "Teacher(s)")]
         public ICollection<Teacher> Teachers { get; set; }
-        public ICollection<Talk> Talks { get; set; }
+        public ICollection<TalkListItem> Talks { get; set; } = new List<TalkListItem>();
+        public List<RetreatRatingListItem> Ratings { get; set; } = new List<RetreatRatingListItem>();
+
         public int? CenterId { get; set; }
         public string CenterName { get; set; }
         public Center Center { get; set; }

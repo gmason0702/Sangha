@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using Sangha.Models.RatingModels.Retreat;
 using Sangha.Models.RetreatModels;
 using Sangha.Services;
 using System;
@@ -40,11 +41,11 @@ namespace SanghaMVC.Controllers
 
             if (service.CreateRetreat(model))
             {
-                TempData["SaveResult"] = "Your note was created.";
+                TempData["SaveResult"] = "Your retreat was created.";
                 return RedirectToAction("Index");
             };
 
-            ModelState.AddModelError("", "Note could not be created.");
+            ModelState.AddModelError("", "Retreat could not be created.");
             return View(model);
         }
 
@@ -112,6 +113,35 @@ namespace SanghaMVC.Controllers
             return RedirectToAction("Index");
         }
 
+        //GET: Retreat/Rate/Id
+        [HttpGet]
+        public ActionResult Rate(int id)
+        {
+            var service = CreateRetreatService();
+            ViewBag.Detail = service.GetRetreatById(id);
+
+            var model = new RetreatRatingCreate{RetreatId = id};
+            return View(model);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Rate(RetreatRatingCreate model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            var service = new RatingService(Guid.Parse(User.Identity.GetUserId()));
+
+            if (service.CreateRetreatRating(model))
+            {
+                TempData["SaveResult"] = "Your retreat was created.";
+                return RedirectToAction("Index");
+            };
+
+            ModelState.AddModelError("", "Retreat could not be created.");
+            return View(model);
+        }
 
         private RetreatService CreateRetreatService()
         {

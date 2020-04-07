@@ -136,10 +136,22 @@ public class Center
 
         //[ForeignKey(nameof(Retreats))]
         //public int? RetreatId { get; set; }
-        public virtual ICollection<Retreat> Retreats { get; set; }
+        public virtual ICollection<Retreat> Retreats { get; set; } = new List<Retreat>();
 
         //public virtual ICollection<RetreatRating> Ratings { get; set; }
-        public double AvgRating { get; set; }
+        [DisplayName("Average Rating")]
+        public double AvgRating
+        {
+            get
+            {
+                if (Ratings != null && Ratings.Count != 0)
+                {
+                    return (double)Ratings.Sum(rating => rating.MyRating) / Ratings.Count;
+                }
+                return 0;
+            }
+        }
+        public virtual ICollection<CenterRating> Ratings { get; set; } = new List<CenterRating>();
 
     }
 }

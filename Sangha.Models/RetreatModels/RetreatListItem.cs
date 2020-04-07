@@ -28,31 +28,38 @@ namespace Sangha.Models.RetreatModels
         public string Teacher { get; set; }
         public ICollection<Teacher> Teachers { get; set; }
 
+        //[DisplayName("Average Rating")]
+        //public double AvgRating
+        //{
+        //get
+        //{
+        //using (var ctx = new ApplicationDbContext())
+        //{
+        //    double sum = 0;
+        //    double count = 0;
+        //    foreach (RetreatRating rating in ctx.Ratings)
+        //    {
+        //        if (rating.RetreatId == RetreatId)
+        //        {
+        //            sum += rating.MyRating;
+        //            count++;
+        //        }
+        //    }
+        //    if (count == 0)
+        //    {
+        //        return 0;
+        //    }
+        //    double average = sum / count;
+        //    return average;
+        //}
+        //if (Rat)
+        //{
+
+        // }
+        //}
+        //}
         [DisplayName("Average Rating")]
-        public double AvgRating
-        {
-            get
-            {
-                using (var ctx = new ApplicationDbContext())
-                {
-                    double sum = 0;
-                    double count = 0;
-                    foreach (RetreatRating rating in ctx.Ratings)
-                    {
-                        if (rating.RetreatId == RetreatId)
-                        {
-                            sum += rating.MyRating;
-                            count++;
-                        }
-                    }
-                    if (count == 0)
-                    {
-                        return 0;
-                    }
-                    double average = sum / count;
-                    return average;
-                }
-            }
-        }
+        public double AvgRating { get; set; }
+       
     }
 }

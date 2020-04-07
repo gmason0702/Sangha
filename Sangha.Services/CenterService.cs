@@ -1,5 +1,6 @@
 ﻿using Sangha.Data;
 using Sangha.Models.CenterModels;
+using Sangha.Models.RetreatModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,7 +74,13 @@ namespace Sangha.Services
                         Name = entity.Name,
                         City = entity.City,
                         State = entity.State,
-                        Retreats = entity.Retreats
+                        Retreats = entity.Retreats.Select(retreat => new RetreatListItem
+                        {
+                            RetreatId = retreat.RetreatId,
+                            RetreatName = retreat.RetreatName,
+                            RetreatDate = retreat.RetreatDate,
+                            RetreatLength = retreat.RetreatLength,
+                        }).ToList(),
                     };
             }
         }

@@ -20,6 +20,9 @@ namespace Sangha.Models.TalkModels
         public TimeSpan TalkLength { get; set; }
         public DateTime TalkDate { get; set; }
         public bool IsGuided { get; set; }
+        public string TalkLink { get; set; }
+        public int TeacherLinkId { get; set; }
+        public int TalkLinkId { get; set; }
         public int? RetreatId { get; set; }
         public int? CenterId { get; set; }
     }

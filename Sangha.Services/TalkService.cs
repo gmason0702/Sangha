@@ -31,7 +31,10 @@ namespace Sangha.Services
                     TalkDate = model.TalkDate,
                     IsGuided=model.IsGuided,
                     RetreatId = model.RetreatId,
-                    CenterId=model.CenterId
+                    CenterId=model.CenterId,
+                    TeacherLinkId=model.TeacherLinkId,
+                    TalkLinkId=model.TalkLinkId,
+                    //TalkLink=model.TalkLink
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -60,6 +63,7 @@ namespace Sangha.Services
                                     IsGuided=e.IsGuided,
                                     IsStarred=e.IsStarred,
                                     RetreatId = e.RetreatId,
+                                    TalkLink= "https://dharmaseed.org/talks/audio_player/" + e.TeacherLinkId + "/" + e.TalkLinkId + ".html"
                                 }
                             );
                 return query.ToArray();
@@ -85,10 +89,24 @@ namespace Sangha.Services
                          TalkDate = entity.TalkDate,
                          IsGuided = entity.IsGuided,
                          TeacherId = entity.TeacherId,
-                         TeacherName=entity.Teachers.FullName
+                         TeacherName=entity.Teachers.FullName,
+                         TalkLink=entity.TalkLink
                      };
             }
         }
+
+        //public IEnumerable<TalkDetail>GetAllTalksByTeacherId(int teacherId)
+        //{
+        //    using (var ctx=new ApplicationDbContext())
+        //    {
+        //        var talks = new List<TalkDetail>();
+        //        var teachers = ctx.Teachers.Where(g => g.TeacherId == teacherId).ToList();
+        //        foreach (var teacher in teachers)
+        //        {
+        //            var teach=ctx.Teachers.FirstOrDefault(u=>u.TeacherId==teacher.TeacherId.ToString())
+        //        }
+        //    }
+        //}
         //public IEnumerable<string> ConvertTalkCollectionToString(ICollection<Talk> talks)
         //{
         //    var query = talks.Select(

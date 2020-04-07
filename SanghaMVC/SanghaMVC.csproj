@@ -323,6 +323,7 @@
     <Content Include="Views\Center\Delete.cshtml" />
     <Content Include="Views\Teacher\Delete.cshtml" />
     <Content Include="Views\Shared\EditorTemplate\Date.cshtml" />
+    <Content Include="Views\Retreat\Rate.cshtml" />
     <Content Include="Views\Shared\EditorTemplate\Starred.cshtml" />
   </ItemGroup>
   <ItemGroup>

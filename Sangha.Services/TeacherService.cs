@@ -77,10 +77,9 @@ namespace Sangha.Services
                             TalkId = talk.TalkId,
                             Name = talk.Name,
                             TeacherId = talk.TeacherId,
-                            //Teacher = e.Teachers.FullName,
                             Topic = talk.Topic,
                             TalkLength = talk.TalkLength,
-                            RetreatId = talk.RetreatId
+                            RetreatId = talk.RetreatId,
                         }).ToList();
                 return
                     new TeacherDetail

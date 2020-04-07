@@ -25,23 +25,34 @@ namespace Sangha.Data
         public int RetreatLength { get; set; }
         public string Description { get; set; }
 
-        [DisplayName("Average Rating")]
-        public double AvgRating { get; set; }
 
         //[ForeignKey(nameof(Teacher))]
         //public int TeacherId { get; set; }
-       // public virtual ICollection<Teacher> Teacher { get; set; }
+        // public virtual ICollection<Teacher> Teacher { get; set; }
 
         //[ForeignKey(nameof(Talks))]
         //public int? TalkId { get; set; }
-        public virtual ICollection<Talk> Talks { get; set; }
+        [DisplayName("Average Rating")]
+        public double AvgRating
+        {
+            get
+            {
+                if (Ratings != null && Ratings.Count != 0)
+                {
+                    return (double)Ratings.Sum(rating => rating.MyRating) / Ratings.Count;
+                }
+                return 0;
+            }
+        }
+        public virtual ICollection<RetreatRating> Ratings { get; set; } = new List<RetreatRating>();
+        public virtual ICollection<Talk> Talks { get; set; } = new List<Talk>();
         public int? TeacherId { get; set; }
-        public virtual ICollection<Teacher> Teachers { get; set; }
+        public virtual ICollection<Teacher> Teachers { get; set; } = new List<Teacher>();
 
         [ForeignKey(nameof(Centers))]
         public int? CenterId { get; set; }
         public virtual Center Centers { get; set; }
         //public virtual ICollection<RetreatRating> Ratings { get; set; }
-        
+
     }
 }

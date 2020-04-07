@@ -28,10 +28,13 @@
     <table class="table">
         <tr>
             @*<th>
-                @Html.DisplayNameFor(model => model.TalkId)
-            </th>*@
+            @Html.DisplayNameFor(model => model.TalkId)
+        </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TalkLink)
             </th>
             <th>
                 @Html.ActionLink("Favorite", "Index", new { sortOrder = ViewBag.IsStarred })
@@ -52,8 +55,6 @@
                 @*@Html.DisplayNameFor(model => model.TalkLength)*@
                 @Html.ActionLink("Talk Length", "Index", new { sortOrder = ViewBag.TalkLength })
             </th>
-
-
             <th></th>
         </tr>
 
@@ -67,6 +68,10 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
+            @*@Html.DisplayFor(modelItem => item.TalkLink)*@
+            <a class=" =btn btn-block" href=@item.TalkLink target="_blank">Listen</a>
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.IsStarred, new { Id = item.TalkId })
         </td>
         <td>
@@ -78,11 +83,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.IsGuided)
         </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.TalkLength)
         </td>
-
-
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.TalkId }) |
             @Html.ActionLink("Details", "Details", new { id = item.TalkId }) |
@@ -90,7 +94,6 @@
         </td>
     </tr>
         }
-
     </table>
     <p>
         @Html.ActionLink("Back to List", "Index")

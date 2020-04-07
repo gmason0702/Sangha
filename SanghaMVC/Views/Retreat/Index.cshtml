@@ -55,6 +55,7 @@
                     @Html.DisplayFor(modelItem => item.AvgRating)
                 </td>
                 <td>
+                    @Html.ActionLink("Rate", "Rate", new { id = item.RetreatId }) |
                     @Html.ActionLink("Edit", "Edit", new { id = item.RetreatId }) |
                     @Html.ActionLink("Details", "Details", new { id = item.RetreatId }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.RetreatId })
