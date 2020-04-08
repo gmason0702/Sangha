@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Sangha.Models.CenterModels;
+using Sangha.Models.RatingModels.Center;
 using Sangha.Services;
 using System;
 using System.Collections.Generic;
@@ -107,6 +108,35 @@ namespace SanghaMVC.Controllers
             TempData["SaveResult"] = "Your note was deleted.";
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Rate(int id)
+        {
+            var service = CreateCenterService();
+            ViewBag.Detail = service.GetCenterById(id);
+
+            var model = new CenterRatingCreate { CenterId = id };
+            return View(model);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Rate(CenterRatingCreate model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            var service = new RatingService(Guid.Parse(User.Identity.GetUserId()));
+
+            if (service.CreateCenterRating(model))
+            {
+                TempData["SaveResult"] = "Your rating was added.";
+                return RedirectToAction("Index");
+            };
+
+            ModelState.AddModelError("", "Rating could not be added.");
+            return View(model);
         }
 
         private CenterService CreateCenterService()

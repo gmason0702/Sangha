@@ -109,7 +109,7 @@ namespace Sangha.Services
                 var entity =
                     ctx
                         .Retreats
-                        .Single(e => e.CenterId == model.RetreatId);
+                        .Single(e => e.RetreatId == model.RetreatId);
                 entity.RetreatName = model.RetreatName;
                 entity.RetreatDate = model.RetreatDate;
                 entity.RetreatLength = model.RetreatLength;

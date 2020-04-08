@@ -64,6 +64,7 @@
     <Compile Include="CenterModels\CenterEdit.cs" />
     <Compile Include="CenterModels\CenterListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RatingModels\Center\CenterRatingCreate.cs" />
     <Compile Include="RatingModels\Center\CenterRatingListItem.cs" />
     <Compile Include="RatingModels\RatingListItem.cs" />
     <Compile Include="RatingModels\Retreat\RetreatRatingCreate.cs" />

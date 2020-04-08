@@ -324,6 +324,8 @@
     <Content Include="Views\Retreat\Rate.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Starred.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Guided.cshtml" />
+    <Content Include="Views\Center\Rate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

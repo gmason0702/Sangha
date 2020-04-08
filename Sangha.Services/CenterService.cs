@@ -1,5 +1,6 @@
 ﻿using Sangha.Data;
 using Sangha.Models.CenterModels;
+using Sangha.Models.RatingModels.Center;
 using Sangha.Models.RetreatModels;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace Sangha.Services
             {
                 var query =
                     ctx
-                        .Centers
+                        .Centers.ToList()
                         //.Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
@@ -51,7 +52,8 @@ namespace Sangha.Services
                                     Name=e.Name,
                                     City=e.City,
                                     State=e.State,
-                                    Retreats=e.Retreats
+                                    Retreats=e.Retreats,
+                                    AvgRating=e.AvgRating                                 
                                 }
                         );
 
@@ -81,6 +83,14 @@ namespace Sangha.Services
                             RetreatDate = retreat.RetreatDate,
                             RetreatLength = retreat.RetreatLength,
                         }).ToList(),
+                        Ratings = entity.Ratings.Select(r => new CenterRatingListItem
+                        {
+                            RatingId = r.RatingId,
+                            CenterId = r.CenterId,
+                            CenterName = entity.Name,
+                            Description = r.Description,
+                            IsUserOwned = r.UserId == _userId.ToString()
+                        }).ToList()
                     };
             }
         }

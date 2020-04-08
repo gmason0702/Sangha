@@ -1,0 +1,8 @@
+﻿
+@model bool
+
+<span>
+    <i class="glyphicon @(Model ? "glyphicon-user" : "glyphicon-unchecked")" 
+       data-toggle="star"
+       data-id="@ViewBag.Id"></i>
+</span>

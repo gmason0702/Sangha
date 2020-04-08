@@ -1,4 +1,5 @@
 ﻿using Sangha.Data;
+using Sangha.Models.RatingModels.Center;
 using Sangha.Models.RatingModels.Retreat;
 using System;
 using System.Collections.Generic;
@@ -34,5 +35,21 @@ namespace Sangha.Services
         }
 
         //Rate a center
+        public bool CreateCenterRating(CenterRatingCreate model)
+        {
+            var entity = new CenterRating
+            {
+                Description = model.Description,
+                CenterId = model.CenterId,
+                MyRating = model.MyRating,
+                VisitDate=model.VisitDate,
+                UserId = _userId.ToString()
+            };
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Ratings.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
