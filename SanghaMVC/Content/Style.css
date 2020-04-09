@@ -4,14 +4,16 @@
     background-position: center;
     background-attachment: fixed;
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .body-content {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.5);
     padding: 2rem 2rem 2rem 2rem;
     border-radius: 25px;
-    margin-top:5rem;
+    box-shadow: 10px 20px 60px;
+    margin-top: 5rem;
+    width: 90%;
 }
 .navbar-brand {
     display: inline-block;
@@ -26,11 +28,28 @@
     text-transform: uppercase;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+.navbar-inverse .navbar-brand{
+    color:blanchedalmond;
+}
+input, select, textarea {
+    max-width: 280px;
+    box-shadow:1px 1px 1px;
+}
 
 h2 {
     font-size: 3.5rem;
-    text-align:center;
-    text-transform:uppercase;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    color:darkslategray;
+}
+h3{
+    color:maroon;
+}
+
+div.col-md-6{
+    border-radius:10px;
+    padding:1rem 1rem 1rem 1rem;
 }
 
 footer{
@@ -41,8 +60,41 @@ footer{
 }
 
 a{
+    color:maroon;
 }
 .dl-horizontal dt {
-    padding-bottom:1.2rem;
+    padding-bottom: 1.2rem;
+    font-size: 1.5rem;
+}
+p{
+    font-weight:600;
+}
+
+.dl-horizontal {
+    margin-top: 0;
+    margin-bottom: 20px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    box-shadow: 1px 1px 20px;
+    padding: 2rem 2rem 2rem 2rem;
+}
+
+table {
+    background-color: whitesmoke;
+    margin-top: 2rem;
+    margin-bottom:2rem;
+    border-radius: 10px;
+    box-shadow: 1px 1px 20px;
+    padding: 2rem 2rem 2rem 2rem;
+    border-collapse:inherit;
+    border-top:groove;
+}
+
+th{
+    font-weight:700;
+    font-size:1.5rem;
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+
 }
 

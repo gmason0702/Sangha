@@ -1,4 +1,5 @@
 ﻿using Sangha.Data;
+using Sangha.Models.RetreatModels;
 using Sangha.Models.TalkModels;
 using Sangha.Models.TeacherModels;
 using System;
@@ -25,7 +26,9 @@ namespace Sangha.Services
                 {
                     //OwnerId = _userId,
                     FirstName = model.FirstName,
-                    LastName = model.LastName
+                    LastName = model.LastName,
+                    Bio=model.Bio
+                    
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -50,6 +53,7 @@ namespace Sangha.Services
                                     FirstName = e.FirstName,
                                     LastName = e.LastName,
                                     Talks = e.Talks,
+                                    Bio=e.Bio
                                     //Retreats = e.Retreats,
                                     //Centers = e.Centers
                                 }
@@ -80,6 +84,20 @@ namespace Sangha.Services
                             Topic = talk.Topic,
                             TalkLength = talk.TalkLength,
                             RetreatId = talk.RetreatId,
+                            TalkDate=talk.TalkDate,
+                            TalkLink = "https://dharmaseed.org/talks/audio_player/" + talk.TeacherLinkId + "/" + talk.TalkLinkId + ".html"
+                        }).ToList();
+                var teacherRetreats =
+                    ctx.Retreats.ToList()
+                        .Where(r => r.TeacherId == entity.TeacherId)
+                        .Select(r => new RetreatListItem
+                        {
+                            RetreatId = r.RetreatId,
+                            RetreatName = r.RetreatName,
+                            CenterName=r.Centers.Name,
+                            RetreatDate = r.RetreatDate,
+                            RetreatLength = r.RetreatLength,
+                            AvgRating = r.AvgRating
                         }).ToList();
                 return
                     new TeacherDetail
@@ -87,11 +105,13 @@ namespace Sangha.Services
                         TeacherId = entity.TeacherId,
                         FirstName = entity.FirstName,
                         LastName = entity.LastName,
+                        Bio=entity.Bio,
                         //Retreats = entity.Retreats,
                         //Centers = entity.Centers,
                         //Talks = teacherTalks.Select(p => new TalkListItem { Name = p.Name, Topic = p.Topic }.ToList)
                         //Talks = talkService.ConvertTalkCollectionToString(entity.Talks)  METHOD FROM TALSERVICE
-                        Talks = teacherTalks
+                        Talks = teacherTalks,
+                        Retreats = teacherRetreats
                     };
             }
         }
@@ -115,6 +135,7 @@ namespace Sangha.Services
                         .Single(e => e.TeacherId == model.TeacherId);
                 entity.FirstName = model.FirstName;
                 entity.LastName = model.LastName;
+                entity.Bio = model.Bio;
 
                 return ctx.SaveChanges() == 1;
             }

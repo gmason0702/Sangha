@@ -13,6 +13,8 @@ namespace Sangha.Models.TalkModels
     {
         [DisplayName("ID")]
         public int TalkId { get; set; }
+
+        [DisplayName("Talk Name")]
         public string Name { get; set; }
         public int? TeacherId { get; set; }
 
@@ -20,6 +22,9 @@ namespace Sangha.Models.TalkModels
         public string TeacherName { get; set; }
         public string Topic { get; set; }
         public TimeSpan TalkLength { get; set; }
+
+        [DisplayName("Talk Date")]
+        public DateTime TalkDate { get; set; }
         public int? RetreatId { get; set; }
 
         [UIHint("Guided")]

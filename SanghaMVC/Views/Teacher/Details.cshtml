@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Teacher Details</h2>
 
 <div>
     @*<h4>TeacherDetail</h4>*@
@@ -42,44 +42,105 @@
             @Html.DisplayFor(model => model.FullName)
         </dd>
         <dt>
+            @Html.DisplayNameFor(model => model.Bio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bio)
+        </dd>
+        <dt>
             @*@Html.DisplayNameFor(model => model.TalkId)
-        </dt>
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TalkId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TalkId)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Topic)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Topic)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Topic)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TalkLength)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Topic)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TalkLength)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TalkLength)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.RetreatId)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TalkLength)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.RetreatId)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.RetreatId)
-        </dd>*@
+                <dd>
+                    @Html.DisplayFor(model => model.RetreatId)
+                </dd>*@
 
     </dl>
 </div>
+<hr />
+<h3>Talks by @Model.FullName</h3>
+@if (Model.Talks != null && Model.Talks.Count() != 0)
+{
+    <table class="table">
+        <tr></tr>
+        <tr>
+            <th>Talk Name</th>
+            <th>Topic</th>
+            <th>Talk Date</th>
+            <th>Listen</th>
+            <th></th>
+        </tr>
+        @foreach (var talk in Model.Talks)
+        {
+            <tr>
+                <td>@talk.Name</td>
+                <td>@talk.Topic</td>
+                <td>@talk.TalkDate</td>
+                @*<td>@talk.TalkLink</td>*@
+                <td>
+                    <a class=" =btn btn-block" href=@talk.TalkLink target="_blank">Listen</a>
+                </td>
+                <td></td>
+            </tr>
+        }
+    </table>
+}
+<h3>Retreats with @Model.FullName</h3>
+@if (Model.Retreats != null && Model.Retreats.Count() != 0)
+{
+    <table class="table">
+        <tr></tr>
+        <tr>
+            <th>Retreat Name</th>
+            <th>Retreat Date</th>
+            <th>Retreat Length</th>
+            <th>Center Name</th>
+            <th>Average Rating</th>
+            <th></th>
+        </tr>
+        @foreach (var r in Model.Retreats)
+        {
+            <tr>
+                <td>@r.RetreatName</td>
+                <td>@r.RetreatDate</td>
+                <td>@r.RetreatLength</td>
+                <td>@r.CenterName</td>
+                <td>@r.AvgRating</td>
+                <td></td>
+            </tr>
+        }
+    </table>
+}
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.TeacherId }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TeacherId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

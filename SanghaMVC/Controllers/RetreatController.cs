@@ -13,16 +13,38 @@ namespace SanghaMVC.Controllers
     public class RetreatController : Controller
     {
         // GET: Retreat
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string sortOrder, string searchString)
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new RetreatService(userId);
             var model = service.GetRetreats();
+            ViewBag.AvgRating = sortOrder == "avgRating_desc" ? "avgRating" : "avgRating_desc";
+            ViewBag.Length = sortOrder == "length_desc" ? "length" : "length_desc";
             if (!String.IsNullOrEmpty(searchString))
             {
                 model = model.Where(s => s.RetreatName.Contains(searchString));
             }
+
+            switch (sortOrder)
+            {
+                case "avgRating":
+                    model = model.OrderBy(s => s.AvgRating);
+                    break;
+                case "avgRating_desc":
+                    model = model.OrderByDescending(s => s.AvgRating);
+                    break;
+                case "length":
+                    model = model.OrderBy(s => s.RetreatLength);
+                    break;
+                case "length_desc":
+                    model = model.OrderByDescending(s => s.RetreatLength);
+                    break;
+                default:
+                    break;
+            }
             return View(model);
+
+            
         }
 
         //GET:Create Retreat

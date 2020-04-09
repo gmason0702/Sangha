@@ -83,8 +83,10 @@ namespace Sangha.Services
                             TalkId = talk.TalkId,
                             Name=talk.Name,
                             IsGuided=talk.IsGuided,
-                            TalkLink=talk.TalkLink,
-                            Topic=talk.Topic,          
+                            TalkDate=talk.TalkDate.Date,
+                            TalkLink = "https://dharmaseed.org/talks/audio_player/" + talk.TeacherLinkId + "/" + talk.TalkLinkId + ".html",
+                            Topic = talk.Topic,
+                            TeacherName=talk.Teachers.FullName                         
                         }).ToList(),
                         CenterId=entity.CenterId,
                         CenterName = entity.Centers.Name,
@@ -92,6 +94,7 @@ namespace Sangha.Services
                         {
                             RatingId=r.RatingId,
                             RetreatId=r.RetreatId,
+                            MyRating=r.MyRating,
                             RetreatName=entity.RetreatName,
                             Description=r.Description,
                             IsUserOwned=r.UserId==_userId.ToString()

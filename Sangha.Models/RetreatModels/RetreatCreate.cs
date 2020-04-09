@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace Sangha.Models.RetreatModels
         public string RetreatName { get; set; }
 
         [DisplayName("Retreat Date")]
+        [DataType(DataType.Date, ErrorMessage = ("Please enter a valid date"))]
         public DateTime RetreatDate { get; set; }
 
         [DisplayName("Retreat Length")]

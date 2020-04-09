@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace Sangha.Models.TalkModels
         public TimeSpan TalkLength { get; set; }
 
         [DisplayName("Talk Date")]
+        [DataType(DataType.Date, ErrorMessage = ("Please enter a valid date"))]
         public DateTime TalkDate { get; set; }
 
         [DisplayName("Guided?")]

@@ -4,10 +4,9 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Retreat Details</h2>
 
 <div>
-    <h4>RetreatDetails</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -41,13 +40,13 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.CenterId)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.CenterId)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.CenterName)
@@ -59,7 +58,58 @@
 
     </dl>
 </div>
+
+<h3>Talks at @Model.RetreatName</h3>
+@if (Model.Talks != null && Model.Talks.Count() != 0)
+{
+    <table class="table">
+        <tr></tr>
+        <tr>
+            <th>Talk Name</th>
+            <th>Teacher Name</th>
+            <th>Topic</th>
+            <th>Talk Date</th>
+            <th>Listen</th>
+            <th></th>
+        </tr>
+        @foreach (var talk in Model.Talks)
+        {
+            <tr>
+                <td>@talk.Name</td>
+                <td>@talk.TeacherName</td>
+                <td>@talk.Topic</td>
+                <td>@talk.TalkDate</td>
+                @*<td>@talk.TalkLink</td>*@
+                <td>
+                    <a class=" =btn btn-block" href=@talk.TalkLink target="_blank">Listen</a>
+                </td>
+                <td></td>
+            </tr>
+        }
+    </table>
+}
+
+<h3>Ratings for @Model.RetreatName</h3>
+@if (Model.Talks != null && Model.Ratings.Count() != 0)
+{
+    <table class="table">
+        <tr></tr>
+        <tr>
+            <th>Rating</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+        @foreach (var rating in Model.Ratings)
+        {
+            <tr>
+                <td>@rating.MyRating</td>
+                <td>@rating.Description</td>              
+                <td></td>
+            </tr>
+        }
+    </table>
+}
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id=Model.RetreatId}) |
     @Html.ActionLink("Back to List", "Index")
 </p>

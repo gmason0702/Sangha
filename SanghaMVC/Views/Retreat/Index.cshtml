@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>List of Retreats</h2>
+<h2>Retreat Directory</h2>
 
 <p>
     @Html.ActionLink("Add New Retreat", "Create")
@@ -28,10 +28,14 @@
                 @Html.DisplayNameFor(model => model.RetreatDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RetreatLength)
+                @Html.ActionLink("Length of Retreat (days)", "Index", new { sortOrder = ViewBag.Length})
+
+                @*@Html.DisplayNameFor(model => model.RetreatLength)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AvgRating)
+                @Html.ActionLink("Average Rating", "Index", new { sortOrder = ViewBag.AvgRating })
+
+                @*@Html.DisplayNameFor(model => model.AvgRating)*@
             </th>
             <th></th>
         </tr>

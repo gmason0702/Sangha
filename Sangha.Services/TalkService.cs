@@ -90,8 +90,29 @@ namespace Sangha.Services
                          IsGuided = entity.IsGuided,
                          TeacherId = entity.TeacherId,
                          TeacherName=entity.Teachers.FullName,
-                         TalkLink=entity.TalkLink
+                         TalkLink = "https://dharmaseed.org/talks/audio_player/" + entity.TeacherLinkId + "/" + entity.TalkLinkId + ".html"
                      };
+            }
+        }
+        public TalkListItem GetTalksByTeacherId(int teacherId)
+        {
+            using (var ctx = new ApplicationDbContext())       
+            {
+                var entity =
+                    ctx
+                        .Talks
+                        .Single(e => e.TeacherId == teacherId);
+                return
+                    new TalkListItem
+                    {
+                        TalkId = entity.TalkId,
+                        Name = entity.Name,
+                        Topic = entity.Topic,
+                        TalkLength = entity.TalkLength,
+                        TalkDate = entity.TalkDate,
+                        IsGuided = entity.IsGuided,
+                        TalkLink = "https://dharmaseed.org/talks/audio_player/" + entity.TeacherLinkId + "/" + entity.TalkLinkId + ".html"
+                    };
             }
         }
 

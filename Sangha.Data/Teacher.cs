@@ -19,6 +19,9 @@ namespace Sangha.Data
         [DisplayName("Full Name")]
         public string FullName => $"{FirstName} {LastName}";
 
+        [DisplayName("About")]
+        [MaxLength(1000, ErrorMessage = "Please enter a shorter bio")]
+        public string Bio { get; set; }
 
         //[ForeignKey(nameof(Talks))]
         //public int? TalkId { get; set; }

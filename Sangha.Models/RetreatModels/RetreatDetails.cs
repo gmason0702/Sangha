@@ -12,6 +12,7 @@ namespace Sangha.Models.RetreatModels
 {
     public class RetreatDetails
     {
+        [Display(Name ="ID")]
         public int RetreatId { get; set; }
         [Display(Name = "Retreat Name")]
         public string RetreatName { get; set; }
@@ -29,7 +30,10 @@ namespace Sangha.Models.RetreatModels
         public ICollection<TalkListItem> Talks { get; set; } = new List<TalkListItem>();
         public List<RetreatRatingListItem> Ratings { get; set; } = new List<RetreatRatingListItem>();
 
+        [Display(Name ="Center ID")]
         public int? CenterId { get; set; }
+
+        [Display(Name ="Center Name")]
         public string CenterName { get; set; }
         public Center Center { get; set; }
     }

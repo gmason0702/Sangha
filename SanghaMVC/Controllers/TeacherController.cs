@@ -88,7 +88,8 @@ namespace SanghaMVC.Controllers
                 {
                     TeacherId = detail.TeacherId,
                     FirstName=detail.FirstName,
-                    LastName=detail.LastName
+                    LastName=detail.LastName,
+                    Bio=detail.Bio
                 };
             return View(model);
         }

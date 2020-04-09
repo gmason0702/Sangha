@@ -88,6 +88,20 @@
         <dd>
             @Html.DisplayFor(model => model.IsGuided)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsStarred)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsStarred)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TalkLink)
+        </dt>
+        <dd>
+            @*@Html.DisplayFor(model => model.TalkLink)*@
+            <a class=" =btn btn-block" href=@Model.TalkLink target="_blank">Listen</a>
+        </dd>
 
     </dl>
 </div>

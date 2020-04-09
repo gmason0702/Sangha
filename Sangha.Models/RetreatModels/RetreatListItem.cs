@@ -58,6 +58,8 @@ namespace Sangha.Models.RetreatModels
         // }
         //}
         //}
+        public int CenterId { get; set; }
+        public string CenterName { get; set; }
         [DisplayName("Average Rating")]
         public double AvgRating { get; set; }
        
