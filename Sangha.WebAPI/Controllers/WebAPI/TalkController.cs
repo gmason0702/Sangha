@@ -29,6 +29,7 @@ namespace Sangha.WebAPI.Controllers.WebAPI
                 {
                     Name = detail.Name,
                     TeacherId = detail.TeacherId,
+                    TalkId=detail.TalkId,
                     //entity.Teachers = model.Teacher;
                     Topic = detail.Topic,
                     TalkLength = detail.TalkLength,

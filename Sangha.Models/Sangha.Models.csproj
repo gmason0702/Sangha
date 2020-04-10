@@ -73,6 +73,10 @@
     <Compile Include="RetreatModels\RetreatDetails.cs" />
     <Compile Include="RetreatModels\RetreatEdit.cs" />
     <Compile Include="RetreatModels\RetreatListItem.cs" />
+    <Compile Include="SitTrackerModels\SitTrackerCreate.cs" />
+    <Compile Include="SitTrackerModels\SitTrackerDetail.cs" />
+    <Compile Include="SitTrackerModels\SitTrackerEdit.cs" />
+    <Compile Include="SitTrackerModels\SitTrackerListItem.cs" />
     <Compile Include="TalkModels\TalkCreate.cs" />
     <Compile Include="TalkModels\TalkDetail.cs" />
     <Compile Include="TalkModels\TalkEdit.cs" />

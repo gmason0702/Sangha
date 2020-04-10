@@ -101,10 +101,15 @@
     <Compile Include="Migrations\202004081358574_AddedTeacherBioProperty.Designer.cs">
       <DependentUpon>202004081358574_AddedTeacherBioProperty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004100053000_AddedSitTrackerClassModelsServiceControllerViews.cs" />
+    <Compile Include="Migrations\202004100053000_AddedSitTrackerClassModelsServiceControllerViews.Designer.cs">
+      <DependentUpon>202004100053000_AddedSitTrackerClassModelsServiceControllerViews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rating.cs" />
     <Compile Include="Retreat.cs" />
+    <Compile Include="SitTracker.cs" />
     <Compile Include="Talk.cs" />
     <Compile Include="Teacher.cs" />
   </ItemGroup>
@@ -143,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004081358574_AddedTeacherBioProperty.resx">
       <DependentUpon>202004081358574_AddedTeacherBioProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004100053000_AddedSitTrackerClassModelsServiceControllerViews.resx">
+      <DependentUpon>202004100053000_AddedSitTrackerClassModelsServiceControllerViews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -27,8 +27,7 @@ namespace Sangha.Services
                     //OwnerId = _userId,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    Bio=model.Bio
-                    
+                    Bio=model.Bio              
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -53,12 +52,13 @@ namespace Sangha.Services
                                     FirstName = e.FirstName,
                                     LastName = e.LastName,
                                     Talks = e.Talks,
-                                    Bio=e.Bio
+                                    Bio=e.Bio,
+                                    TalkCount=e.Talks.Count
+                                    
                                     //Retreats = e.Retreats,
                                     //Centers = e.Centers
                                 }
                         );
-
                 return query.ToArray();
             }
         }
@@ -73,20 +73,27 @@ namespace Sangha.Services
                         .Single(e => e.TeacherId == id);
                 //var query = ctx.Talks.Include("Talks").ToList();
                 //var teacherTalks = entity.Talks.ToList();
-                var teacherTalks =
-                    ctx.Talks
-                        .Where(talk => talk.TeacherId == entity.TeacherId)
-                        .Select(talk => new TalkDetail
-                        {
-                            TalkId = talk.TalkId,
-                            Name = talk.Name,
-                            TeacherId = talk.TeacherId,
-                            Topic = talk.Topic,
-                            TalkLength = talk.TalkLength,
-                            RetreatId = talk.RetreatId,
-                            TalkDate=talk.TalkDate,
-                            TalkLink = "https://dharmaseed.org/talks/audio_player/" + talk.TeacherLinkId + "/" + talk.TalkLinkId + ".html"
-                        }).ToList();
+
+
+                var teacherTalks = new List<TalkDetail>();
+                foreach (var talk in entity.Talks)
+                {
+                    var detail = new TalkDetail()
+                    //ctx.Talks
+                    //    .Where(talk => talk.TeacherId == entity.TeacherId)
+                    //    .Select(talk => new TalkDetail
+                    {
+                        TalkId = talk.TalkId,
+                        Name = talk.Name,
+                        TeacherId = talk.TeacherId,
+                        Topic = talk.Topic,
+                        TalkLength = talk.TalkLength,
+                        RetreatId = talk.RetreatId,
+                        TalkDate = talk.TalkDate,
+                        TalkLink = "https://dharmaseed.org/talks/audio_player/" + talk.TeacherLinkId + "/" + talk.TalkLinkId + ".html"
+                    };//).ToList();
+                    teacherTalks.Add(detail);
+                }
                 var teacherRetreats =
                     ctx.Retreats.ToList()
                         .Where(r => r.TeacherId == entity.TeacherId)
@@ -94,6 +101,7 @@ namespace Sangha.Services
                         {
                             RetreatId = r.RetreatId,
                             RetreatName = r.RetreatName,
+                            CenterId= r.CenterId,
                             CenterName=r.Centers.Name,
                             RetreatDate = r.RetreatDate,
                             RetreatLength = r.RetreatLength,

@@ -44,7 +44,57 @@
 
     </dl>
 </div>
+
+<h3>Retreats at @Model.Name</h3>
+@if (Model.Retreats != null && Model.Retreats.Count() != 0)
+{
+    <table class="table">
+        <tr></tr>
+        <tr>
+            <th>Retreat Name</th>
+            <th>Retreat Date</th>
+            <th>Retreat Length</th>
+            @*<th>Center Name</th>*@
+            <th>Average Rating</th>
+            <th></th>
+        </tr>
+        @foreach (var r in Model.Retreats)
+        {
+            <tr>
+                <td>@r.RetreatName</td>
+                <td>@r.RetreatDate</td>
+                <td>@r.RetreatLength</td>
+                @*<td>@r.CenterName</td>*@
+                @*<td>
+                    @Html.ActionLink(r.CenterName, "Details", "Center", new { id = r.CenterId }, new { @class = "action-links" })
+                </td>*@
+                <td>@r.AvgRating</td>
+                <td></td>
+            </tr>
+        }
+    </table>
+}
+<h3>Ratings for @Model.Name</h3>
+@if (Model.Ratings != null && Model.Ratings.Count() != 0)
+{
+    <table class="table">
+        <tr></tr>
+        <tr>
+            <th>Rating</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+        @foreach (var rating in Model.Ratings)
+        {
+            <tr>
+                <td>@rating.MyRating</td>
+                <td>@rating.Description</td>
+                <td></td>
+            </tr>
+        }
+    </table>
+}
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CenterId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

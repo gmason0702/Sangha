@@ -1,0 +1,58 @@
+﻿@model Sangha.Models.SitTrackerModels.SitTrackerDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    @*<h4>SitTrackerDetail</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SitId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SitId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SitDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SitDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SitLength)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SitLength)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SitLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SitLink)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=item.SitId}) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

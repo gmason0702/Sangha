@@ -3,7 +3,7 @@
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 500;
 }
 
@@ -52,11 +52,14 @@ div.col-md-6{
     padding:1rem 1rem 1rem 1rem;
 }
 
-footer{
-    display:table;
+footer {
+    /*display:table;
     text-align:center;
     margin-left:auto;
-    margin-right:auto;
+    margin-right:auto;*/
+    display: flex;
+    justify-content: space-evenly;
+    padding-left:1rem;
 }
 
 a{
@@ -94,7 +97,20 @@ th{
     font-weight:700;
     font-size:1.5rem;
 }
-.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
 
+.container .jumbotron{
+    box-shadow:1px 1px 10px;
+    padding-top:2rem;
+    padding-bottom:2rem;
+}
+blockquote footer, blockquote small, blockquote .small {
+    text-align:right;
+}
+
+.starred{
+    text-align:center;
+}
+.guided{
+    text-align:center;
 }
 

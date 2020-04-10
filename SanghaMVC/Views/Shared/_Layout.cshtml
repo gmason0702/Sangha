@@ -20,7 +20,6 @@
             type="text/javascript"></script>
     <link href="~/Content/Style.css" rel="stylesheet" type="text/css" />
 
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -42,8 +41,10 @@
                         <li>@Html.ActionLink("Teachers", "Index", "Teacher")</li>
                         <li>@Html.ActionLink("Retreats", "Index", "Retreat")</li>
                         <li>@Html.ActionLink("Centers", "Index", "Center")</li>
+                        <li>@Html.ActionLink("My Sits", "Index", "SitTracker")</li>
+
                     }
-                   
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -53,8 +54,8 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - The Sangha</p>
             <p>@Html.ActionLink("About", "About", "Home")</p>
+            <p>&copy; @DateTime.Now.Year - The Sangha</p>
             <p>@Html.ActionLink("Contact", "Contact", "Home")</p>
         </footer>
     </div>

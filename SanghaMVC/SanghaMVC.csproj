@@ -188,6 +188,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RetreatController.cs" />
+    <Compile Include="Controllers\SitTrackerController.cs" />
     <Compile Include="Controllers\TalkController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Global.asax.cs">
@@ -326,6 +327,11 @@
     <Content Include="Views\Shared\DisplayTemplates\Starred.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Guided.cshtml" />
     <Content Include="Views\Center\Rate.cshtml" />
+    <Content Include="Views\SitTracker\Create.cshtml" />
+    <Content Include="Views\SitTracker\Details.cshtml" />
+    <Content Include="Views\SitTracker\Edit.cshtml" />
+    <Content Include="Views\SitTracker\Delete.cshtml" />
+    <Content Include="Views\SitTracker\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

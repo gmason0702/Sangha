@@ -24,7 +24,6 @@
             </p>
         }*@
 
-
     <table class="table">
         <tr>
             @*<th>
@@ -51,11 +50,11 @@
                 @*@Html.DisplayNameFor(model=>model.isGuided)*@
                 @Html.ActionLink("Guided", "Index", new { sortOrder = ViewBag.IsGuided })
             </th>
-            <th>
+            <th colspan="2">
                 @*@Html.DisplayNameFor(model => model.TalkLength)*@
                 @Html.ActionLink("Talk Length", "Index", new { sortOrder = ViewBag.TalkLength })
             </th>
-            <th></th>
+            @*<th></th>*@
         </tr>
 
         @foreach (var item in Model)
@@ -64,23 +63,24 @@
         @*<td>
             @Html.DisplayFor(modelItem => item.TalkId)
         </td>*@
-        <td>
+        <td width="25%">
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
             @*@Html.DisplayFor(modelItem => item.TalkLink)*@
             <a class=" =btn btn-block" href=@item.TalkLink target="_blank">Listen</a>
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsStarred, new { Id = item.TalkId})
+        <td class="starred">
+            @Html.DisplayFor(modelItem => item.IsStarred, new {@class="starred", Id = item.TalkId})
         </td>
-        <td>
+        <td width="20%">
             @Html.DisplayFor(modelItem => item.Topic)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TeacherName)
+            @*@Html.DisplayFor(modelItem => item.TeacherName)*@
+            @Html.ActionLink(item.TeacherName, "Details","Teacher", new { id=item.TeacherId}, new { @class="action-links"})
         </td>
-        <td>
+        <td class="guided">
             @Html.DisplayFor(modelItem => item.IsGuided)
         </td>
 

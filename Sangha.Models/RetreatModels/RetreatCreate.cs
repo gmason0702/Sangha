@@ -24,10 +24,10 @@ namespace Sangha.Models.RetreatModels
 
         public ICollection<Teacher> Teacher { get; set; }
 
-        [DisplayName("ID")]
+        [DisplayName("Center ID")]
         public int CenterId { get; set; }
 
-        [DisplayName("Name")]
+        [DisplayName("Center Name")]
         public string CenterName { get; set; }
         public Center Center { get; set; }
     }

@@ -82,10 +82,14 @@ namespace Sangha.Services
                             RetreatName = retreat.RetreatName,
                             RetreatDate = retreat.RetreatDate,
                             RetreatLength = retreat.RetreatLength,
+                            CenterId=retreat.CenterId,
+                            AvgRating=retreat.AvgRating
+                            
                         }).ToList(),
                         Ratings = entity.Ratings.Select(r => new CenterRatingListItem
                         {
                             RatingId = r.RatingId,
+                            MyRating=r.MyRating,
                             CenterId = r.CenterId,
                             CenterName = entity.Name,
                             Description = r.Description,

@@ -36,9 +36,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.FullName)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Bio)
-            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.TalkCount)
+            </th>
             <th></th>
         </tr>
 
@@ -57,9 +57,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.FullName)
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Bio)
-        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.TalkCount)
+        </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.TeacherId }) |
             @Html.ActionLink("Details", "Details", new { id = item.TeacherId }) |

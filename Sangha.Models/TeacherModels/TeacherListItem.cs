@@ -24,6 +24,9 @@ namespace Sangha.Models.TeacherModels
         [DisplayName("About")]
         [MaxLength(1000, ErrorMessage = "Please enter a shorter bio")]
         public string Bio { get; set; }
+
+        [Display(Name = "Talk Count")]
+        public int TalkCount { get; set; }
         public ICollection<Talk> Talks { get; set; }
         public ICollection<Retreat> Retreats { get; set; }
         public ICollection<Center> Centers { get; set; }

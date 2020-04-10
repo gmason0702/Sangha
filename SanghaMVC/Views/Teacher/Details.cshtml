@@ -133,7 +133,10 @@
                 <td>@r.RetreatName</td>
                 <td>@r.RetreatDate</td>
                 <td>@r.RetreatLength</td>
-                <td>@r.CenterName</td>
+                @*<td>@r.CenterName</td>*@
+                <td>
+                    @Html.ActionLink(r.CenterName, "Details", "Center", new { id = r.CenterId }, new { @class = "action-links" })
+                </td>
                 <td>@r.AvgRating</td>
                 <td></td>
             </tr>

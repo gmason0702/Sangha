@@ -158,6 +158,7 @@ namespace Sangha.Services
                     ctx
                         .Talks
                         .Single(e => e.TalkId == model.TalkId);
+                entity.TalkId = model.TalkId;
                 entity.Name = model.Name;
                 entity.TeacherId = model.TeacherId;
                 //entity.Teachers = model.Teacher;

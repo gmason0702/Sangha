@@ -34,7 +34,6 @@ namespace Sangha.Data
         public int TeacherLinkId { get; set; }
         public int TalkLinkId { get; set; }
 
-
         [ForeignKey(nameof(Teachers))]
         public int? TeacherId { get; set; }
         public virtual Teacher Teachers { get; set; }
