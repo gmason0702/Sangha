@@ -78,6 +78,7 @@ namespace Sangha.Services
                     ctx
                         .Talks
                         .Single(e => e.TalkId == Id);
+
                  return
                      new TalkDetail
                      {

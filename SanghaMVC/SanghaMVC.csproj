@@ -204,6 +204,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\logo.png" />
+    <Content Include="Content\logo2.png" />
     <Content Include="Content\Style.css" />
     <Content Include="Content\styles.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -323,7 +325,7 @@
     <Content Include="Views\Center\Delete.cshtml" />
     <Content Include="Views\Teacher\Delete.cshtml" />
     <Content Include="Views\Retreat\Rate.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ADateTime.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Starred.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Guided.cshtml" />
     <Content Include="Views\Center\Rate.cshtml" />
@@ -332,6 +334,7 @@
     <Content Include="Views\SitTracker\Edit.cshtml" />
     <Content Include="Views\SitTracker\Delete.cshtml" />
     <Content Include="Views\SitTracker\Index.cshtml" />
+    <Content Include="Views\SitTracker\Timer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,6 +17,7 @@ namespace Sangha.Models.RetreatModels
         [Display(Name = "Retreat Name")]
         public string RetreatName { get; set; }
 
+        [UIHint("ADateTime")]
         [Display(Name = "Start Date")]
         public DateTime RetreatDate { get; set; }
 

@@ -17,58 +17,62 @@
     </p>
 }
     </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TeacherId)
 
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.FirstName)*@
-                @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstNameSort })
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TeacherId)
 
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.LastName)*@
-                @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastNameSort })
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.FirstName)*@
+                    @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstNameSort })
 
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FullName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TalkCount)
-            </th>
-            <th></th>
-        </tr>
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.LastName)*@
+                    @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastNameSort })
 
-        @foreach (var item in Model)
-        {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TeacherId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TalkCount)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.TeacherId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.TeacherId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.TeacherId })
-        </td>
-    </tr>
-        }
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TalkCount)
+                </th>
+                <th></th>
+            </tr>
 
-    </table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeacherId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TalkCount)
+                        @*@Html.ActionLink(item.TalkCount, "Index", "Teacher", new { id = item.TeacherId }, new { @class = "action-links" })*@
+
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.TeacherId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.TeacherId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.TeacherId })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
     <p>
         @Html.ActionLink("Back to List", "Index")
     </p>

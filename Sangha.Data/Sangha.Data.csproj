@@ -105,6 +105,10 @@
     <Compile Include="Migrations\202004100053000_AddedSitTrackerClassModelsServiceControllerViews.Designer.cs">
       <DependentUpon>202004100053000_AddedSitTrackerClassModelsServiceControllerViews.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004100127212_AddedSitTrackerTypeOfSitEnum.cs" />
+    <Compile Include="Migrations\202004100127212_AddedSitTrackerTypeOfSitEnum.Designer.cs">
+      <DependentUpon>202004100127212_AddedSitTrackerTypeOfSitEnum.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rating.cs" />
@@ -151,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004100053000_AddedSitTrackerClassModelsServiceControllerViews.resx">
       <DependentUpon>202004100053000_AddedSitTrackerClassModelsServiceControllerViews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004100127212_AddedSitTrackerTypeOfSitEnum.resx">
+      <DependentUpon>202004100127212_AddedSitTrackerTypeOfSitEnum.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

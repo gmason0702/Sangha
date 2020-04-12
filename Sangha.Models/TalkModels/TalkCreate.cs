@@ -23,6 +23,7 @@ namespace Sangha.Models.TalkModels
         [DisplayName("Talk Length")]
         public TimeSpan TalkLength { get; set; }
 
+        [UIHint("ADateTime")]
         [DisplayName("Talk Date")]
         [DataType(DataType.Date, ErrorMessage = ("Please enter a valid date"))]
         public DateTime TalkDate { get; set; }
@@ -34,7 +35,7 @@ namespace Sangha.Models.TalkModels
         [DisplayName("Dharmaseed Teacher ID")]
         public int TeacherLinkId { get; set; }
 
-        [DisplayName("Dharmaseed Teacher ID")]
+        [DisplayName("Dharmaseed Talk ID")]
         public int TalkLinkId { get; set; }
 
         [DisplayName("Retreat ID")]

@@ -16,8 +16,9 @@ namespace Sangha.Models.RetreatModels
         [DisplayName("Name")]
         public string RetreatName { get; set; }
 
-        [DataType(DataType.Date, ErrorMessage = ("Please enter a valid date"))]
+        //[DataType(DataType.Date, ErrorMessage = ("Please enter a valid date"))]
         [DisplayName("Date")]
+        [UIHint("ADateTime")]
         public DateTime RetreatDate { get; set; }
 
         [DisplayName("Retreat Length (days)")]

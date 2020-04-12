@@ -13,11 +13,36 @@ namespace SanghaMVC.Controllers
     public class CenterController : Controller
     {
         // GET: Center
-        public ActionResult Index()
+        public ActionResult Index(string searchString, string sortOrder)
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new CenterService(userId);
             var model = service.GetCenters();
+            ViewBag.StateSort = sortOrder == "state_desc" ? "state" : "state_desc";
+            ViewBag.RatingSort = sortOrder == "avgRating_desc" ? "avgating" : "avgRating_desc";
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(s => s.Name.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "state":
+                    model = model.OrderBy(s => s.State);
+                    break;
+                case "state_desc":
+                    model = model.OrderByDescending(s => s.State);
+                    break;
+                case "avgRating":
+                    model = model.OrderBy(s => s.AvgRating);
+                    break;
+                case "avgRating_desc":
+                    model = model.OrderByDescending(s => s.AvgRating);
+                    break;
+                default:
+                    model = model.OrderBy(s => s.Name);
+
+                    break;
+            }
             return View(model);
         }
 
@@ -63,7 +88,7 @@ namespace SanghaMVC.Controllers
                     CenterId = detail.CenterId,
                     Name = detail.Name,
                     City = detail.City,
-                    State=detail.State
+                    State = detail.State
                 };
             return View(model);
         }

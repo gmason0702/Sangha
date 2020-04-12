@@ -23,6 +23,7 @@ namespace Sangha.Models.TalkModels
         public string Topic { get; set; }
         public TimeSpan TalkLength { get; set; }
 
+        [UIHint("ADateTime")]
         [DisplayName("Talk Date")]
         public DateTime TalkDate { get; set; }
         public int? RetreatId { get; set; }

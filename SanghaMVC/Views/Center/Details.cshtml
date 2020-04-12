@@ -61,7 +61,11 @@
         @foreach (var r in Model.Retreats)
         {
             <tr>
-                <td>@r.RetreatName</td>
+                <td>
+                    @*@r.RetreatName*@
+                                @Html.ActionLink(r.RetreatName, "Details", "Retreat", new { id = r.RetreatId }, new { @class = "action-links" })
+
+                            </td>
                 <td>@r.RetreatDate</td>
                 <td>@r.RetreatLength</td>
                 @*<td>@r.CenterName</td>*@

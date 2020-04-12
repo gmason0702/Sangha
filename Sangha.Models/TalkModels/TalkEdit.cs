@@ -24,8 +24,9 @@ namespace Sangha.Models.TalkModels
         [DisplayName("Talk Length")]
         public TimeSpan TalkLength { get; set; }
 
+        [UIHint("ADateTime")]
         [DisplayName("Talk Date")]
-        [DataType(DataType.Date, ErrorMessage = ("Please enter a valid date"))]
+        //[DataType(DataType.Date, ErrorMessage = ("Please enter a valid date"))]
         public DateTime TalkDate { get; set; }
 
         [DisplayName("Guided?")]

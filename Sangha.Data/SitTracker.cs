@@ -19,6 +19,7 @@ namespace Sangha.Data
         public TimeSpan SitLength { get; set; }
         public string Note { get; set; }
         public string SitLink { get; set; }
+        public SitType TypeOfSit { get; set; }
 
         [ForeignKey(nameof(User))]
         public string UserId { get; set; }

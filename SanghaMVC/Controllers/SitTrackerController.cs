@@ -106,6 +106,12 @@ namespace SanghaMVC.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult GetTimer()
+        {
+            return View();
+        }
         private SitTrackerService CreateSitService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

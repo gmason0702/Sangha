@@ -11,14 +11,18 @@ namespace Sangha.Models.TalkModels
 {
     public class TalkDetail
     {
+        [DisplayName("Talk ID")]
         public int TalkId { get; set; }
 
+        [DisplayName("Talk Name")]
         public string Name { get; set; }
-        [DisplayName("Talk ID")]
+
+        [DisplayName("Teacher ID")]
         public int? TeacherId { get; set; }
 
         [DisplayName("Teacher")]
         public string TeacherName { get; set; }
+
         [DisplayName("Retreat ID")]
         public int? RetreatId { get; set; }
         public string Topic { get; set; }
@@ -27,6 +31,7 @@ namespace Sangha.Models.TalkModels
         [DisplayName("Talk Length")]
         public TimeSpan TalkLength { get; set; }
 
+        [UIHint("ADateTime")]
         [DisplayName("Talk Date")]
         [DataType(DataType.Date)]
         public DateTime TalkDate { get; set; }

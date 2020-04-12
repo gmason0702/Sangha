@@ -41,18 +41,33 @@
         <dd>
             @Html.DisplayFor(model => model.Note)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.SitLink)
+            @Html.DisplayNameFor(model => model.TypeOfSit)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SitLink)
+            @Html.DisplayFor(model => model.TypeOfSit)
+        </dd>
+
+        <dt>
+            @if (Model.SitLink!=null)
+            {
+                @Html.DisplayNameFor(model => model.SitLink)
+
+            }
+        </dt>
+
+        <dd>
+            @if (Model.SitLink!=null)
+            {
+                @Html.DisplayFor(model => model.SitLink)
+
+            }
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=item.SitId}) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SitId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

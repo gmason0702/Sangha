@@ -21,9 +21,11 @@ namespace Sangha.Services
             var entity =
                 new SitTracker()
                 {
-                    SitDate = model.SitDate,
+                    UserId=_userId.ToString(),
+                    SitDate = DateTimeOffset.Now,
                     SitLength = model.SitLength,
                     Note = model.Note,
+                    TypeOfSit = model.TypeOfSit,
                     SitLink = model.SitLink
                 };
             using (var ctx = new ApplicationDbContext())
@@ -41,9 +43,11 @@ namespace Sangha.Services
                     ctx
                         .Sits.Select(e => new SitTrackerListItem
                         {
-                            SitDate = e.SitDate,
+                            SitId=e.SitId,
                             SitLength = e.SitLength,
                             Note=e.Note,
+                            SitDate = e.SitDate,
+                            TypeOfSit = e.TypeOfSit,                         
                             SitLink=e.SitLink
                         });
                 return query.ToArray();
@@ -59,6 +63,7 @@ namespace Sangha.Services
                     SitDate = entity.SitDate,
                     SitLength = entity.SitLength,
                     Note = entity.Note,
+                    TypeOfSit = entity.TypeOfSit,
                     SitLink = entity.SitLink
                 };
             }
@@ -71,11 +76,13 @@ namespace Sangha.Services
                 entity.SitDate = model.SitDate;
                 entity.SitLength = model.SitLength;
                 entity.Note = model.Note;
+                entity.TypeOfSit = model.TypeOfSit;
                 entity.SitLink = model.SitLink;
 
                 return ctx.SaveChanges() == 1;
             }
         }
+
 
         public bool DeleteSit(int sitId)
         {
