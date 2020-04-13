@@ -23,6 +23,9 @@
             @Html.DisplayNameFor(model => model.TalkId)
         </th>*@
             <th>
+                @Html.DisplayNameFor(model => model.TalkDate)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
@@ -56,17 +59,21 @@
         @*<td>
             @Html.DisplayFor(modelItem => item.TalkId)
         </td>*@
+        <td>
+            @Html.DisplayFor(modelitem=>item.TalkDate)
+        </td>
         <td width="25%">
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-        <td>
+        <td class="play">
             @*@Html.DisplayFor(modelItem => item.TalkLink)*@
-            <a class=" =btn btn-block" href=@item.TalkLink target="_blank">Listen</a>
+            @*<a class=" =btn btn-block" href=@item.TalkLink target="_blank">Listen</a>*@
+            <a href="@item.TalkLink" target="_blank"><span class="glyphicon glyphicon-play"></span></a>
         </td>
         <td class="starred">
             @Html.DisplayFor(modelItem => item.IsStarred, new {@class="starred", Id = item.TalkId})
         </td>
-        <td width="20%">
+        <td width="15%">
             @Html.DisplayFor(modelItem => item.Topic)
         </td>
         <td>

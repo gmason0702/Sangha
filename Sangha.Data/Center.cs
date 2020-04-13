@@ -126,16 +126,8 @@ public class Center
         public States State { get; set; }
         public string Country { get; set; }
 
-        //[ForeignKey(nameof(Talks))]
-        //public int? TalkId { get; set; }//maybe don't need
         public virtual ICollection<Talk> Talks { get; set; } //NonRetreatTalks
 
-        //[ForeignKey(nameof(Teachers))]
-        //public int? TeacherId { get; set; }
-        //public virtual ICollection<Teacher> Teachers { get; set; }
-
-        //[ForeignKey(nameof(Retreats))]
-        //public int? RetreatId { get; set; }
         public virtual ICollection<Retreat> Retreats { get; set; } = new List<Retreat>();
 
         //public virtual ICollection<RetreatRating> Ratings { get; set; }

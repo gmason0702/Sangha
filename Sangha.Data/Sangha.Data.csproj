@@ -109,6 +109,14 @@
     <Compile Include="Migrations\202004100127212_AddedSitTrackerTypeOfSitEnum.Designer.cs">
       <DependentUpon>202004100127212_AddedSitTrackerTypeOfSitEnum.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004121839103_AddedICollectionReteratToTeacher.cs" />
+    <Compile Include="Migrations\202004121839103_AddedICollectionReteratToTeacher.Designer.cs">
+      <DependentUpon>202004121839103_AddedICollectionReteratToTeacher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004131510558_addedForeignKeyToRetreatTeacher.cs" />
+    <Compile Include="Migrations\202004131510558_addedForeignKeyToRetreatTeacher.Designer.cs">
+      <DependentUpon>202004131510558_addedForeignKeyToRetreatTeacher.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rating.cs" />
@@ -158,6 +166,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004100127212_AddedSitTrackerTypeOfSitEnum.resx">
       <DependentUpon>202004100127212_AddedSitTrackerTypeOfSitEnum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004121839103_AddedICollectionReteratToTeacher.resx">
+      <DependentUpon>202004121839103_AddedICollectionReteratToTeacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004131510558_addedForeignKeyToRetreatTeacher.resx">
+      <DependentUpon>202004131510558_addedForeignKeyToRetreatTeacher.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -40,6 +40,7 @@ namespace SanghaMVC.Controllers
                     model = model.OrderByDescending(s => s.RetreatLength);
                     break;
                 default:
+                    model = model.OrderByDescending(s => s.RetreatDate);
                     break;
             }
             return View(model);

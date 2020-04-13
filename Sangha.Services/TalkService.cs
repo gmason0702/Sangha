@@ -59,6 +59,7 @@ namespace Sangha.Services
                                     TeacherId=e.TeacherId,
                                     TeacherName = e.Teachers.FirstName + " " + e.Teachers.LastName,
                                     Topic = e.Topic,
+                                    TalkDate=e.TalkDate,
                                     TalkLength = e.TalkLength,
                                     IsGuided=e.IsGuided,
                                     IsStarred=e.IsStarred,

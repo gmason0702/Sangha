@@ -35,6 +35,7 @@ namespace Sangha.Models.TalkModels
         [DisplayName("Favorite")]
         public bool IsStarred { get; set; }
 
+        [UIHint("Listen")]
         [DisplayName("Listen")]
         public string TalkLink { get; set; }
         public int TeacherLinkId { get; set; }

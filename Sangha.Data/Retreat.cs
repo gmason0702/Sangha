@@ -28,8 +28,8 @@ namespace Sangha.Data
 
 
         //[ForeignKey(nameof(Teacher))]
-        //public int TeacherId { get; set; }
-        // public virtual ICollection<Teacher> Teacher { get; set; }
+        //public int? TeacherId { get; set; }
+        //public virtual ICollection<Teacher> Teacher { get; set; } = new List<Teacher>();
 
         //[ForeignKey(nameof(Talks))]
         //public int? TalkId { get; set; }
@@ -47,8 +47,9 @@ namespace Sangha.Data
         }
         public virtual ICollection<RetreatRating> Ratings { get; set; } = new List<RetreatRating>();
         public virtual ICollection<Talk> Talks { get; set; } = new List<Talk>();
-        public int? TeacherId { get; set; }
-        public virtual ICollection<Teacher> Teachers { get; set; } = new List<Teacher>();
+       
+        //public int? TeacherId { get; set; }
+        //public virtual ICollection<Teacher> Teachers { get; set; } = new List<Teacher>();
 
         [ForeignKey(nameof(Centers))]
         public int? CenterId { get; set; }

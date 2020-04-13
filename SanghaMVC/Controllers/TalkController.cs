@@ -72,7 +72,7 @@ namespace SanghaMVC.Controllers
                     model = model.OrderByDescending(s => s.TalkLength);
                     break;
                 default:
-                    model = model.OrderBy(s => s.TeacherId);
+                    model = model.OrderByDescending(s => s.TalkDate);
                     break;
             }
 

@@ -335,6 +335,7 @@
     <Content Include="Views\SitTracker\Delete.cshtml" />
     <Content Include="Views\SitTracker\Index.cshtml" />
     <Content Include="Views\SitTracker\Timer.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Listen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

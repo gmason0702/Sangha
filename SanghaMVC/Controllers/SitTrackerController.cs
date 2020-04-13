@@ -108,9 +108,10 @@ namespace SanghaMVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetTimer()
+        public ActionResult Timer()
         {
             return View();
+
         }
         private SitTrackerService CreateSitService()
         {

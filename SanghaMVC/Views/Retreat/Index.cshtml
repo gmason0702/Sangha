@@ -56,7 +56,10 @@
                     @Html.DisplayFor(modelItem => item.RetreatLength)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.AvgRating)
+                    @if (item.AvgRating != 0)
+                    {
+                        @Html.DisplayFor(modelItem => item.AvgRating)
+                    }
                 </td>
                 <td>
                     @Html.ActionLink("Rate", "Rate", new { id = item.RetreatId }) |

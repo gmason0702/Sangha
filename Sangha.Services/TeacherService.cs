@@ -27,7 +27,7 @@ namespace Sangha.Services
                     //OwnerId = _userId,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    Bio=model.Bio              
+                    Bio = model.Bio
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -52,9 +52,9 @@ namespace Sangha.Services
                                     FirstName = e.FirstName,
                                     LastName = e.LastName,
                                     Talks = e.Talks,
-                                    Bio=e.Bio,
-                                    TalkCount=e.Talks.Count
-                                    
+                                    Bio = e.Bio,
+                                    TalkCount = e.Talks.Count,
+
                                     //Retreats = e.Retreats,
                                     //Centers = e.Centers
                                 }
@@ -66,22 +66,15 @@ namespace Sangha.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                //var talkService = new TalkService(); from TALKSERVICE METHOD CONVERTALKCOLLECTIONTOSTRING
                 var entity =
                     ctx
                         .Teachers
                         .Single(e => e.TeacherId == id);
-                //var query = ctx.Talks.Include("Talks").ToList();
-                //var teacherTalks = entity.Talks.ToList();
-
 
                 var teacherTalks = new List<TalkDetail>();
                 foreach (var talk in entity.Talks)
                 {
                     var detail = new TalkDetail()
-                    //ctx.Talks
-                    //    .Where(talk => talk.TeacherId == entity.TeacherId)
-                    //    .Select(talk => new TalkDetail
                     {
                         TalkId = talk.TalkId,
                         Name = talk.Name,
@@ -91,47 +84,38 @@ namespace Sangha.Services
                         RetreatId = talk.RetreatId,
                         TalkDate = talk.TalkDate,
                         TalkLink = "https://dharmaseed.org/talks/audio_player/" + talk.TeacherLinkId + "/" + talk.TalkLinkId + ".html"
-                    };//).ToList();
+                    };
                     teacherTalks.Add(detail);
                 }
-                var teacherRetreats =
-                    ctx.Retreats.ToList()
-                        .Where(r => r.TeacherId == entity.TeacherId)
-                        .Select(r => new RetreatListItem
-                        {
-                            RetreatId = r.RetreatId,
-                            RetreatName = r.RetreatName,
-                            CenterId= r.CenterId,
-                            CenterName=r.Centers.Name,
-                            RetreatDate = r.RetreatDate,
-                            RetreatLength = r.RetreatLength,
-                            AvgRating = r.AvgRating
-                        }).ToList();
+
+                var retreats = entity.Talks.Select(t => t.Retreats).ToList();
+                var teacherRetreats = new List<RetreatListItem>();
+                foreach (var r in retreats)
+                {
+                    var list = new RetreatListItem()
+                    {
+                        RetreatId = r.RetreatId,
+                        RetreatName = r.RetreatName,
+                        CenterId = r.CenterId,
+                        CenterName = r.Centers.Name,
+                        RetreatDate = r.RetreatDate,
+                        RetreatLength = r.RetreatLength,
+                        AvgRating = r.AvgRating
+                    };
+                    teacherRetreats.Add(list);
+                }
                 return
                     new TeacherDetail
                     {
                         TeacherId = entity.TeacherId,
                         FirstName = entity.FirstName,
                         LastName = entity.LastName,
-                        Bio=entity.Bio,
-                        //Retreats = entity.Retreats,
-                        //Centers = entity.Centers,
-                        //Talks = teacherTalks.Select(p => new TalkListItem { Name = p.Name, Topic = p.Topic }.ToList)
-                        //Talks = talkService.ConvertTalkCollectionToString(entity.Talks)  METHOD FROM TALSERVICE
-                        Talks = teacherTalks,
-                        Retreats = teacherRetreats
+                        Bio = entity.Bio,
+                        Retreats = teacherRetreats,
+                        Talks = teacherTalks
                     };
             }
         }
-        //public ICollection<Talk> GetTalks()
-        //{
-        //    var talks = new List<string>();
-        //    foreach (var talk in talks)
-        //    {
-        //        talks = string.Join(",", talks.ToArray())
-        //    }
-
-        //}
 
         public bool UpdateTeacher(TeacherEdit model)
         {

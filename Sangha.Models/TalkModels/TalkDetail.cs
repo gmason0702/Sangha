@@ -1,4 +1,5 @@
 ﻿using Sangha.Data;
+using Sangha.Models.RetreatModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,7 @@ namespace Sangha.Models.TalkModels
 
         [DisplayName("Retreat ID")]
         public int? RetreatId { get; set; }
+        public List<RetreatListItem> Retreats { get; set; }
         public string Topic { get; set; }
         public string Description { get; set; }
 

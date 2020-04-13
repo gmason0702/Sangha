@@ -27,6 +27,8 @@ namespace Sangha.Data
         //public int? TalkId { get; set; }
         public virtual ICollection<Talk> Talks { get; set; }
 
+        //public virtual ICollection<Retreat> Retreats { get; set; } = new List<Retreat>();
+
         //[ForeignKey(nameof(Retreats))]
         //public int? RetreatId { get; set; }
       //  public virtual ICollection<Retreat> Retreats { get; set; }
