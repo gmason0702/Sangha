@@ -43,12 +43,26 @@
             @Html.EditorFor(model => model.TeacherId, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.TeacherId, "", new { @class = "text-danger" })
         </div>
+        @*<div class= "form-group">
+                @Html.LabelFor(model=>Model.TeacherName,htmlAttributes: new { @class= "control-label col-md-2"})
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TeacherName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TeacherName, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.RetreatId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.RetreatId, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.RetreatId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CenterId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CenterId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CenterId, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -67,7 +81,27 @@
             @Html.ValidationMessageFor(model => model.TalkDate, "", new { @class = "text-danger" })
         </div>
     </div>
-
+    @*<div class="form-group">
+        @Html.LabelFor(model => model.TalkLink, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TalkLink, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TalkLink, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+    <div class="form-group">
+        @Html.LabelFor(model => model.TeacherLinkId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TeacherLinkId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TeacherLinkId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.TalkLinkId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TalkLinkId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TalkLinkId, "", new { @class = "text-danger" })
+        </div>
+    </div>
     <div class="form-group">
         @Html.LabelFor(model => model.IsGuided, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">

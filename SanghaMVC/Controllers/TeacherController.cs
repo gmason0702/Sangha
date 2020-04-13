@@ -12,11 +12,35 @@ namespace SanghaMVC.Controllers
     public class TeacherController : Controller
     {
         // GET: Teacher
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string teacherSearch)
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new TeacherService(userId);
             var model = service.GetTeachers();
+            ViewBag.FirstNameSort = sortOrder == "firstNameSort_desc" ? "firstNameSort" : "firstNameSort_desc";
+            ViewBag.LastNameSort = sortOrder == "lastNameSort_desc" ? "lastNameSort" : "lastNameSort_desc";
+            if (!String.IsNullOrEmpty(teacherSearch))
+            {
+                model = model.Where(s => s.FullName.Contains(teacherSearch));
+            }
+
+            switch (sortOrder)
+            {
+                case "firstNameSort":
+                    model = model.OrderBy(s => s.FirstName);
+                    break;
+                case "firstNameSort_desc":
+                    model = model.OrderByDescending(s => s.FirstName);
+                    break;
+                case "lastNameSort":
+                    model = model.OrderBy(s => s.LastName);
+                    break;
+                case "lastNameSort_desc":
+                    model = model.OrderByDescending(s => s.LastName);
+                    break;
+                default:
+                    break;
+            }
             return View(model);
         }
         //GET:Create Teacher
@@ -30,9 +54,11 @@ namespace SanghaMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(TeacherCreate model)
         {
+
             if (!ModelState.IsValid) return View(model);
 
             var service = CreateTeacherService();
+            ViewBag.Teachers = service.GetTeachers();
 
             if (service.CreateTeacher(model))
             {
@@ -62,7 +88,8 @@ namespace SanghaMVC.Controllers
                 {
                     TeacherId = detail.TeacherId,
                     FirstName=detail.FirstName,
-                    LastName=detail.LastName
+                    LastName=detail.LastName,
+                    Bio=detail.Bio
                 };
             return View(model);
         }

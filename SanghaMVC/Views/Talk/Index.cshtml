@@ -4,54 +4,124 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Talk Directory</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TalkId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Topic)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Teacher)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TalkLength)
-        </th>
-        <th></th>
-    </tr>
+    @Html.ActionLink("Add New Talk", "Create")
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.TalkId)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Topic)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Teacher)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.TalkLength)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.TalkId }) |
-        @Html.ActionLink("Details", "Details", new { id = item.TalkId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.TalkId })
-    </td>
-</tr>
+    @using (Html.BeginForm("Index", "talk", FormMethod.Get))
+    {
+    <p>
+        Search by Talk: @Html.TextBox("SearchString") <br />
+        <input type="submit" value="Filter" />
+    </p>
 }
 
-</table>
+    <table class="table">
+        <tr>
+            @*<th>
+            @Html.DisplayNameFor(model => model.TalkId)
+        </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.TalkDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TalkLink)
+            </th>
+            <th>
+                @Html.ActionLink("Favorite", "Index", new { sortOrder = ViewBag.IsStarred })
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Topic)*@
+                @Html.ActionLink("Topic", "Index", new { sortOrder = ViewBag.TopicSort })
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Teacher)*@
+                @Html.ActionLink("Teacher", "Index", new { sortOrder = ViewBag.TeacherSort })
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model=>model.isGuided)*@
+                @Html.ActionLink("Guided", "Index", new { sortOrder = ViewBag.IsGuided })
+            </th>
+            <th colspan="2">
+                @*@Html.DisplayNameFor(model => model.TalkLength)*@
+                @Html.ActionLink("Talk Length", "Index", new { sortOrder = ViewBag.TalkLength })
+            </th>
+            @*<th></th>*@
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.TalkId)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelitem=>item.TalkDate)
+        </td>
+        <td width="25%">
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td class="play">
+            @*@Html.DisplayFor(modelItem => item.TalkLink)*@
+            @*<a class=" =btn btn-block" href=@item.TalkLink target="_blank">Listen</a>*@
+            <a href="@item.TalkLink" target="_blank"><span class="glyphicon glyphicon-play"></span></a>
+        </td>
+        <td class="starred">
+            @Html.DisplayFor(modelItem => item.IsStarred, new {@class="starred", Id = item.TalkId})
+        </td>
+        <td width="15%">
+            @Html.DisplayFor(modelItem => item.Topic)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.TeacherName)*@
+            @Html.ActionLink(item.TeacherName, "Details","Teacher", new { id=item.TeacherId}, new { @class="action-links"})
+        </td>
+        <td class="guided">
+            @Html.DisplayFor(modelItem => item.IsGuided)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.TalkLength)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.TalkId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TalkId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.TalkId })
+        </td>
+    </tr>
+        }
+    </table>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+    @section scripts {
+        <script language="javascript" type="text/javascript">
+     $(document).ready(function () {
+         $("i[data-toggle='star']")
+             .css({ "cursor": "pointer" })
+             .click(function (e) {
+                 var target = $(e.target);
+                 var talkId = target.attr("data-id");
+                 var starSet = target.hasClass("glyphicon-star");
+
+                 $.ajax({
+                     method: starSet ? "DELETE" : "PUT",
+                     url: "/api/talk/" + talkId + "/star",
+                     data: null
+                 })
+                 .done(function (r) {
+                     target.removeClass();
+                     target.addClass("glyphicon " + (starSet ? "glyphicon-star-empty" : "glyphicon-star"));
+                 })
+                 .fail(function (r) {
+                     alert("Failed to change star status");
+                 });
+             });
+     });
+        </script>
+    }

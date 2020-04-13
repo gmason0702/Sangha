@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Sangha.Models.CenterModels;
+using Sangha.Models.RatingModels.Center;
 using Sangha.Services;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,36 @@ namespace SanghaMVC.Controllers
     public class CenterController : Controller
     {
         // GET: Center
-        public ActionResult Index()
+        public ActionResult Index(string searchString, string sortOrder)
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new CenterService(userId);
             var model = service.GetCenters();
+            ViewBag.StateSort = sortOrder == "state_desc" ? "state" : "state_desc";
+            ViewBag.RatingSort = sortOrder == "avgRating_desc" ? "avgating" : "avgRating_desc";
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(s => s.Name.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "state":
+                    model = model.OrderBy(s => s.State);
+                    break;
+                case "state_desc":
+                    model = model.OrderByDescending(s => s.State);
+                    break;
+                case "avgRating":
+                    model = model.OrderBy(s => s.AvgRating);
+                    break;
+                case "avgRating_desc":
+                    model = model.OrderByDescending(s => s.AvgRating);
+                    break;
+                default:
+                    model = model.OrderBy(s => s.Name);
+
+                    break;
+            }
             return View(model);
         }
 
@@ -62,7 +88,7 @@ namespace SanghaMVC.Controllers
                     CenterId = detail.CenterId,
                     Name = detail.Name,
                     City = detail.City,
-                    State=detail.State
+                    State = detail.State
                 };
             return View(model);
         }
@@ -107,6 +133,35 @@ namespace SanghaMVC.Controllers
             TempData["SaveResult"] = "Your note was deleted.";
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Rate(int id)
+        {
+            var service = CreateCenterService();
+            ViewBag.Detail = service.GetCenterById(id);
+
+            var model = new CenterRatingCreate { CenterId = id };
+            return View(model);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Rate(CenterRatingCreate model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            var service = new RatingService(Guid.Parse(User.Identity.GetUserId()));
+
+            if (service.CreateCenterRating(model))
+            {
+                TempData["SaveResult"] = "Your rating was added.";
+                return RedirectToAction("Index");
+            };
+
+            ModelState.AddModelError("", "Rating could not be added.");
+            return View(model);
         }
 
         private CenterService CreateCenterService()

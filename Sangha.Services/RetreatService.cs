@@ -1,5 +1,7 @@
 ﻿using Sangha.Data;
+using Sangha.Models.RatingModels.Retreat;
 using Sangha.Models.RetreatModels;
+using Sangha.Models.TalkModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +29,7 @@ namespace Sangha.Services
                     RetreatLength = model.RetreatLength,
                     //TeacherId = model.TeacherId,
                     CenterId=model.CenterId,
-                    //CenterName = model.Center.Name
+                    Description=model.Description
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -36,13 +38,14 @@ namespace Sangha.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
         public IEnumerable<RetreatListItem> GetRetreats()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                        .Retreats
+                        .Retreats.ToList()
                         //.Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
@@ -52,11 +55,9 @@ namespace Sangha.Services
                                     RetreatName = e.RetreatName,
                                     RetreatDate = e.RetreatDate,
                                     RetreatLength = e.RetreatLength,
-                                    //TeacherId=e.Teachers.TeacherId,
-                                    //Teacher=e.Teachers.
+                                    AvgRating=e.AvgRating                               
                                 }
                         );
-
                 return query.ToArray();
             }
         }
@@ -69,18 +70,41 @@ namespace Sangha.Services
                     ctx
                         .Retreats
                         .Single(e => e.RetreatId == id);
-                return
+                var model =
                     new RetreatDetails
                     {
                         RetreatName = entity.RetreatName,
                         RetreatDate = entity.RetreatDate,
                         RetreatLength = entity.RetreatLength,
                         //Teacher = entity.Teacher,
+                        Description = entity.Description,
+                        Talks = entity.Talks.Select(talk => new TalkListItem
+                        {
+                            TalkId = talk.TalkId,
+                            Name=talk.Name,
+                            IsGuided=talk.IsGuided,
+                            TalkDate=talk.TalkDate.Date,
+                            TalkLink = "https://dharmaseed.org/talks/audio_player/" + talk.TeacherLinkId + "/" + talk.TalkLinkId + ".html",
+                            Topic = talk.Topic,
+                            TeacherName=talk.Teachers.FullName                         
+                        }).ToList(),
                         CenterId=entity.CenterId,
-                        CenterName = entity.Centers.Name
+                        CenterName = entity.Centers.Name,
+                        Ratings=entity.Ratings.Select(r=> new RetreatRatingListItem
+                        {
+                            RatingId=r.RatingId,
+                            RetreatId=r.RetreatId,
+                            MyRating=r.MyRating,
+                            RetreatName=entity.RetreatName,
+                            Description=r.Description,
+                            IsUserOwned=r.UserId==_userId.ToString()
+                            
+                        }).ToList()
                     };
+                return model;
             }
         }
+
         public bool UpdateRetreat(RetreatEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -88,10 +112,11 @@ namespace Sangha.Services
                 var entity =
                     ctx
                         .Retreats
-                        .Single(e => e.CenterId == model.RetreatId);
+                        .Single(e => e.RetreatId == model.RetreatId);
                 entity.RetreatName = model.RetreatName;
                 entity.RetreatDate = model.RetreatDate;
                 entity.RetreatLength = model.RetreatLength;
+                entity.Description = model.Description;
 
                 return ctx.SaveChanges() == 1;
             }

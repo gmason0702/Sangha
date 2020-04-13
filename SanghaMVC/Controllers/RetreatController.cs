@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using Sangha.Models.RatingModels.Retreat;
 using Sangha.Models.RetreatModels;
 using Sangha.Services;
 using System;
@@ -12,12 +13,39 @@ namespace SanghaMVC.Controllers
     public class RetreatController : Controller
     {
         // GET: Retreat
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new RetreatService(userId);
             var model = service.GetRetreats();
+            ViewBag.AvgRating = sortOrder == "avgRating_desc" ? "avgRating" : "avgRating_desc";
+            ViewBag.Length = sortOrder == "length_desc" ? "length" : "length_desc";
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(s => s.RetreatName.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "avgRating":
+                    model = model.OrderBy(s => s.AvgRating);
+                    break;
+                case "avgRating_desc":
+                    model = model.OrderByDescending(s => s.AvgRating);
+                    break;
+                case "length":
+                    model = model.OrderBy(s => s.RetreatLength);
+                    break;
+                case "length_desc":
+                    model = model.OrderByDescending(s => s.RetreatLength);
+                    break;
+                default:
+                    model = model.OrderByDescending(s => s.RetreatDate);
+                    break;
+            }
             return View(model);
+
+            
         }
 
         //GET:Create Retreat
@@ -36,11 +64,11 @@ namespace SanghaMVC.Controllers
 
             if (service.CreateRetreat(model))
             {
-                TempData["SaveResult"] = "Your note was created.";
+                TempData["SaveResult"] = "Your retreat was created.";
                 return RedirectToAction("Index");
             };
 
-            ModelState.AddModelError("", "Note could not be created.");
+            ModelState.AddModelError("", "Retreat could not be created.");
             return View(model);
         }
 
@@ -108,6 +136,35 @@ namespace SanghaMVC.Controllers
             return RedirectToAction("Index");
         }
 
+        //GET: Retreat/Rate/Id
+        [HttpGet]
+        public ActionResult Rate(int id)
+        {
+            var service = CreateRetreatService();
+            ViewBag.Detail = service.GetRetreatById(id);
+
+            var model = new RetreatRatingCreate{RetreatId = id};
+            return View(model);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Rate(RetreatRatingCreate model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            var service = new RatingService(Guid.Parse(User.Identity.GetUserId()));
+
+            if (service.CreateRetreatRating(model))
+            {
+                TempData["SaveResult"] = "Your retreat was created.";
+                return RedirectToAction("Index");
+            };
+
+            ModelState.AddModelError("", "Retreat could not be created.");
+            return View(model);
+        }
 
         private RetreatService CreateRetreatService()
         {

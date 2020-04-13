@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -14,12 +15,19 @@ namespace Sangha.Data
         public int TeacherId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
+        [DisplayName("Full Name")]
         public string FullName => $"{FirstName} {LastName}";
 
+        [DisplayName("About")]
+        [MaxLength(1000, ErrorMessage = "Please enter a shorter bio")]
+        public string Bio { get; set; }
 
         //[ForeignKey(nameof(Talks))]
         //public int? TalkId { get; set; }
         public virtual ICollection<Talk> Talks { get; set; }
+
+        //public virtual ICollection<Retreat> Retreats { get; set; } = new List<Retreat>();
 
         //[ForeignKey(nameof(Retreats))]
         //public int? RetreatId { get; set; }

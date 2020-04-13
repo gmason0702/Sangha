@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Sangha.Models.SitTrackerModels.SitTrackerListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SitId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SitDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SitLength)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeOfSit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SitLink)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SitId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SitDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SitLength)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeOfSit)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.SitLink)*@
+                @if (item.SitLink != null)
+                {
+                    <a class=" =btn btn-block" href=@item.SitLink target="_blank">Listen</a>
+                }
+
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.SitId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.SitId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.SitId })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>TalkDetail</h4>
+    @*<h4>TalkDetail</h4>*@
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -27,11 +27,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Teacher)
+            @Html.DisplayNameFor(model => model.TeacherName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Teacher)
+            @Html.DisplayFor(model => model.TeacherName)
         </dd>
 
         <dt>
@@ -41,6 +41,13 @@
         <dd>
             @Html.DisplayFor(model => model.TeacherId)
         </dd>
+        @*<dt>
+            @Html.DisplayNameFor(model => model.RetreatId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RetreatId)
+        </dd*@
 
         <dt>
             @Html.DisplayNameFor(model => model.Topic)
@@ -80,6 +87,20 @@
 
         <dd>
             @Html.DisplayFor(model => model.IsGuided)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsStarred)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsStarred)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TalkLink)
+        </dt>
+        <dd>
+            @*@Html.DisplayFor(model => model.TalkLink)*@
+            <a class=" =btn btn-block" href=@Model.TalkLink target="_blank">Listen</a>
         </dd>
 
     </dl>

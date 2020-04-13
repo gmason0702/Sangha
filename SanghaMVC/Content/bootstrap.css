@@ -5,12 +5,15 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
-  font-family: sans-serif;
+  font-family: Georgia;
   -ms-text-size-adjust: 100%;
+  line-height:1.15;
   -webkit-text-size-adjust: 100%;
 }
 body {
-  margin: 0;
+    margin: 0;
+    font-size:1rem;
+    font-weight:400;
 }
 article,
 aside,
@@ -1598,7 +1601,7 @@ pre code {
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    width: 1200px;
   }
 }
 .container-fluid {

@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -67,17 +69,66 @@
     <Compile Include="Migrations\202004011701555_UpdatedClassForeignKeyNamingConvention.Designer.cs">
       <DependentUpon>202004011701555_UpdatedClassForeignKeyNamingConvention.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004031423213_updatedDateTimeAttributes.cs" />
+    <Compile Include="Migrations\202004031423213_updatedDateTimeAttributes.Designer.cs">
+      <DependentUpon>202004031423213_updatedDateTimeAttributes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004042309380_AddedDescriptionToRetreat.cs" />
+    <Compile Include="Migrations\202004042309380_AddedDescriptionToRetreat.Designer.cs">
+      <DependentUpon>202004042309380_AddedDescriptionToRetreat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004042341208_AddedStateEnumToCenter.cs" />
+    <Compile Include="Migrations\202004042341208_AddedStateEnumToCenter.Designer.cs">
+      <DependentUpon>202004042341208_AddedStateEnumToCenter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004051944251_AddedStarredBoolToNotes.cs" />
+    <Compile Include="Migrations\202004051944251_AddedStarredBoolToNotes.Designer.cs">
+      <DependentUpon>202004051944251_AddedStarredBoolToNotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004061341210_NotSureWhyImHavingToMigrateHere.cs" />
+    <Compile Include="Migrations\202004061341210_NotSureWhyImHavingToMigrateHere.Designer.cs">
+      <DependentUpon>202004061341210_NotSureWhyImHavingToMigrateHere.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004061843211_AddedAudioURLIdsToTalkEntity.cs" />
+    <Compile Include="Migrations\202004061843211_AddedAudioURLIdsToTalkEntity.Designer.cs">
+      <DependentUpon>202004061843211_AddedAudioURLIdsToTalkEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004071832360_AddedRatingModelsServices.cs" />
+    <Compile Include="Migrations\202004071832360_AddedRatingModelsServices.Designer.cs">
+      <DependentUpon>202004071832360_AddedRatingModelsServices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004081358574_AddedTeacherBioProperty.cs" />
+    <Compile Include="Migrations\202004081358574_AddedTeacherBioProperty.Designer.cs">
+      <DependentUpon>202004081358574_AddedTeacherBioProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004100053000_AddedSitTrackerClassModelsServiceControllerViews.cs" />
+    <Compile Include="Migrations\202004100053000_AddedSitTrackerClassModelsServiceControllerViews.Designer.cs">
+      <DependentUpon>202004100053000_AddedSitTrackerClassModelsServiceControllerViews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004100127212_AddedSitTrackerTypeOfSitEnum.cs" />
+    <Compile Include="Migrations\202004100127212_AddedSitTrackerTypeOfSitEnum.Designer.cs">
+      <DependentUpon>202004100127212_AddedSitTrackerTypeOfSitEnum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004121839103_AddedICollectionReteratToTeacher.cs" />
+    <Compile Include="Migrations\202004121839103_AddedICollectionReteratToTeacher.Designer.cs">
+      <DependentUpon>202004121839103_AddedICollectionReteratToTeacher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004131510558_addedForeignKeyToRetreatTeacher.cs" />
+    <Compile Include="Migrations\202004131510558_addedForeignKeyToRetreatTeacher.Designer.cs">
+      <DependentUpon>202004131510558_addedForeignKeyToRetreatTeacher.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rating.cs" />
     <Compile Include="Retreat.cs" />
+    <Compile Include="SitTracker.cs" />
     <Compile Include="Talk.cs" />
-    <Compile Include="TalkRepository.cs" />
     <Compile Include="Teacher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Scripts\jquery-1.12.4.min.map" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202003311937332_FixedTables.resx">
@@ -86,6 +137,97 @@
     <EmbeddedResource Include="Migrations\202004011701555_UpdatedClassForeignKeyNamingConvention.resx">
       <DependentUpon>202004011701555_UpdatedClassForeignKeyNamingConvention.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004031423213_updatedDateTimeAttributes.resx">
+      <DependentUpon>202004031423213_updatedDateTimeAttributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004042309380_AddedDescriptionToRetreat.resx">
+      <DependentUpon>202004042309380_AddedDescriptionToRetreat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004042341208_AddedStateEnumToCenter.resx">
+      <DependentUpon>202004042341208_AddedStateEnumToCenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004051944251_AddedStarredBoolToNotes.resx">
+      <DependentUpon>202004051944251_AddedStarredBoolToNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004061341210_NotSureWhyImHavingToMigrateHere.resx">
+      <DependentUpon>202004061341210_NotSureWhyImHavingToMigrateHere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004061843211_AddedAudioURLIdsToTalkEntity.resx">
+      <DependentUpon>202004061843211_AddedAudioURLIdsToTalkEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004071832360_AddedRatingModelsServices.resx">
+      <DependentUpon>202004071832360_AddedRatingModelsServices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004081358574_AddedTeacherBioProperty.resx">
+      <DependentUpon>202004081358574_AddedTeacherBioProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004100053000_AddedSitTrackerClassModelsServiceControllerViews.resx">
+      <DependentUpon>202004100053000_AddedSitTrackerClassModelsServiceControllerViews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004100127212_AddedSitTrackerTypeOfSitEnum.resx">
+      <DependentUpon>202004100127212_AddedSitTrackerTypeOfSitEnum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004121839103_AddedICollectionReteratToTeacher.resx">
+      <DependentUpon>202004121839103_AddedICollectionReteratToTeacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004131510558_addedForeignKeyToRetreatTeacher.resx">
+      <DependentUpon>202004131510558_addedForeignKeyToRetreatTeacher.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Scripts\jquery-1.12.4.intellisense.js" />
+    <Content Include="Scripts\jquery-1.12.4.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.80.0.3987.10600\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.80.0.3987.10600\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.80.0.3987.10600\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.80.0.3987.10600\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+  </Target>
 </Project>

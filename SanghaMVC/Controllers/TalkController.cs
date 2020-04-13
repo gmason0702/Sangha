@@ -11,12 +11,71 @@ namespace SanghaMVC.Controllers
 {
     public class TalkController : Controller
     {
+
         // GET: Talk
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new TalkService(userId);
             var model = service.GetTalks();
+            ViewBag.TopicSort = sortOrder == "topic_desc" ? "topic" : "topic_desc";
+            ViewBag.TeacherSort = sortOrder == "teacher_desc" ? "teacher" : "teacher_desc";
+            ViewBag.Name = sortOrder == "name_desc" ? "name" : "name_desc";
+            ViewBag.IsGuided = sortOrder == "isGuided_desc/" ? "isGuided" : "isGuided_desc";
+            ViewBag.TalkLength = sortOrder == "talkLength_desc" ? "talkLength" : "talkLength_desc";
+            ViewBag.IsStarred = sortOrder == "isStarred_desc" ? "isStarred" : "isStarred_desc";
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(s => s.Name.Contains(searchString) || s.Topic==searchString);
+            }
+            //if (!String.IsNullOrEmpty(topicSearch))
+            //{
+            //    model = model.Where(s => s.Topic==topicSearch);
+            //}
+
+            switch (sortOrder)
+            {
+                case "topic":
+                    model = model.OrderBy(s => s.Topic);
+                    break;
+                case "topic_desc":
+                    model = model.OrderByDescending(s => s.Topic);
+                    break;
+                case "teacher":
+                    model = model.OrderBy(s => s.TeacherName);
+                    break;
+                case "teacher_desc":
+                    model = model.OrderByDescending(s => s.TeacherName);
+                    break;
+                case "name":
+                    model = model.OrderBy(s => s.Name);
+                    break;
+                case "name_desc":
+                    model = model.OrderByDescending(s => s.Name);
+                    break;
+                case "isGuided":
+                    model = model.OrderBy(s => s.IsGuided);
+                    break;
+                case "isGuided_desc":
+                    model = model.OrderByDescending(s => s.IsGuided);
+                    break;
+                case "isStarred":
+                    model = model.OrderBy(s => s.IsStarred);
+                    break;
+                case "isStarred_desc":
+                    model = model.OrderByDescending(s => s.IsStarred);
+                    break;
+                case "talkLength":
+                    model = model.OrderBy(s => s.TalkLength);
+                    break;
+                case "talkLength_desc":
+                    model = model.OrderByDescending(s => s.TalkLength);
+                    break;
+                default:
+                    model = model.OrderByDescending(s => s.TalkDate);
+                    break;
+            }
+
             return View(model);
         }
 
@@ -64,7 +123,8 @@ namespace SanghaMVC.Controllers
                 {
                     TalkId = detail.TalkId,
                     Name = detail.Name,
-                    Teacher = detail.Teacher,
+                    //Teacher = detail.Teacher,
+                    TeacherId=detail.TeacherId,
                     Topic = detail.Topic,
                     TalkLength=detail.TalkLength,
                     TalkDate=detail.TalkDate,

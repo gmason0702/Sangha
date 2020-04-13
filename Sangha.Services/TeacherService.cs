@@ -1,4 +1,6 @@
 ﻿using Sangha.Data;
+using Sangha.Models.RetreatModels;
+using Sangha.Models.TalkModels;
 using Sangha.Models.TeacherModels;
 using System;
 using System.Collections.Generic;
@@ -24,7 +26,8 @@ namespace Sangha.Services
                 {
                     //OwnerId = _userId,
                     FirstName = model.FirstName,
-                    LastName = model.LastName
+                    LastName = model.LastName,
+                    Bio = model.Bio
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -45,15 +48,17 @@ namespace Sangha.Services
                             e =>
                                 new TeacherListItem
                                 {
-                                    TeacherId=e.TeacherId,
+                                    TeacherId = e.TeacherId,
                                     FirstName = e.FirstName,
                                     LastName = e.LastName,
                                     Talks = e.Talks,
+                                    Bio = e.Bio,
+                                    TalkCount = e.Talks.Count,
+
                                     //Retreats = e.Retreats,
                                     //Centers = e.Centers
                                 }
                         );
-
                 return query.ToArray();
             }
         }
@@ -65,19 +70,53 @@ namespace Sangha.Services
                     ctx
                         .Teachers
                         .Single(e => e.TeacherId == id);
+
+                var teacherTalks = new List<TalkDetail>();
+                foreach (var talk in entity.Talks)
+                {
+                    var detail = new TalkDetail()
+                    {
+                        TalkId = talk.TalkId,
+                        Name = talk.Name,
+                        TeacherId = talk.TeacherId,
+                        Topic = talk.Topic,
+                        TalkLength = talk.TalkLength,
+                        RetreatId = talk.RetreatId,
+                        TalkDate = talk.TalkDate,
+                        TalkLink = "https://dharmaseed.org/talks/audio_player/" + talk.TeacherLinkId + "/" + talk.TalkLinkId + ".html"
+                    };
+                    teacherTalks.Add(detail);
+                }
+
+                var retreats = entity.Talks.Select(t => t.Retreats).ToList();
+                var teacherRetreats = new List<RetreatListItem>();
+                foreach (var r in retreats)
+                {
+                    var list = new RetreatListItem()
+                    {
+                        RetreatId = r.RetreatId,
+                        RetreatName = r.RetreatName,
+                        CenterId = r.CenterId,
+                        CenterName = r.Centers.Name,
+                        RetreatDate = r.RetreatDate,
+                        RetreatLength = r.RetreatLength,
+                        AvgRating = r.AvgRating
+                    };
+                    teacherRetreats.Add(list);
+                }
                 return
                     new TeacherDetail
                     {
-                        TeacherId=entity.TeacherId,
+                        TeacherId = entity.TeacherId,
                         FirstName = entity.FirstName,
                         LastName = entity.LastName,
-                        Talks = entity.Talks,
-                        //Retreats = entity.Retreats,
-                        //Centers = entity.Centers
-
+                        Bio = entity.Bio,
+                        Retreats = teacherRetreats,
+                        Talks = teacherTalks
                     };
             }
         }
+
         public bool UpdateTeacher(TeacherEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -88,6 +127,7 @@ namespace Sangha.Services
                         .Single(e => e.TeacherId == model.TeacherId);
                 entity.FirstName = model.FirstName;
                 entity.LastName = model.LastName;
+                entity.Bio = model.Bio;
 
                 return ctx.SaveChanges() == 1;
             }

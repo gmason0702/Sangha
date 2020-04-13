@@ -37,6 +37,7 @@ namespace Sangha.Data
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Center> Centers { get; set; }
         public DbSet<Rating> Ratings { get; set; }
+        public DbSet<SitTracker> Sits { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
