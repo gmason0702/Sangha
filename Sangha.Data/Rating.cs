@@ -14,7 +14,7 @@ namespace Sangha.Data
         [Key]
         public int RatingId { get; set; }
         [Required]
-        [Range(1,5)]
+        [Range(1, 5)]
         public int MyRating { get; set; }
         public string Description { get; set; }
 

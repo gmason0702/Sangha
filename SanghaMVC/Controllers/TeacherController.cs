@@ -43,6 +43,7 @@ namespace SanghaMVC.Controllers
             }
             return View(model);
         }
+
         //GET:Create Teacher
         public ActionResult Create()
         {
@@ -78,6 +79,7 @@ namespace SanghaMVC.Controllers
 
             return View(model);
         }
+
         // GET: Teacher/Edit/5
         public ActionResult Edit(int id)
         {

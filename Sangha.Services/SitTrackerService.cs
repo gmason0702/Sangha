@@ -68,6 +68,18 @@ namespace Sangha.Services
                 };
             }
         }
+        public SitTrackerDetail GetSitTimerById(int id)
+        {
+            using (var ctx=new ApplicationDbContext())
+            {
+                var entity = ctx.Sits.Single(e => e.SitId == id);
+                return new SitTrackerDetail
+                {
+                    SitId = entity.SitId,
+                    SitLength = entity.SitLength
+                };
+            }
+        }
         public bool UpdateSit(SitTrackerEdit model)
         {
             using (var ctx = new ApplicationDbContext())

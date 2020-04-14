@@ -204,6 +204,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fullBuddhaLogo.png" />
+    <Content Include="Content\halfBuddhaLogo.png" />
     <Content Include="Content\logo.png" />
     <Content Include="Content\logo2.png" />
     <Content Include="Content\Style.css" />
@@ -255,6 +257,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\SanghaMeditation - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DatePickerReady.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

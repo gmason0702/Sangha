@@ -28,7 +28,7 @@
                 @Html.DisplayNameFor(model => model.RetreatDate)
             </th>
             <th>
-                @Html.ActionLink("Length of Retreat (days)", "Index", new { sortOrder = ViewBag.Length})
+                @Html.ActionLink("Length of Retreat (days)", "Index", new { sortOrder = ViewBag.Length })
 
                 @*@Html.DisplayNameFor(model => model.RetreatLength)*@
             </th>
@@ -56,9 +56,58 @@
                     @Html.DisplayFor(modelItem => item.RetreatLength)
                 </td>
                 <td>
-                    @if (item.AvgRating != 0)
+                    @switch (item.AvgRating)
                     {
-                        @Html.DisplayFor(modelItem => item.AvgRating)
+                        case 1:
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            break;
+                        case 1.5:
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon " src="~/Content/halfBuddhaLogo.png" alt=".5" />
+                            break;
+                        case 2:
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            break;
+                        case 2.5:
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon " src="~/Content/halfBuddhaLogo.png" alt=".5" />
+                            break;
+                        case 3:
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            break;
+                        case 3.5:
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon " src="~/Content/halfBuddhaLogo.png" alt=".5" />
+                            break;
+                        case 4:
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            break;
+                        case 4.5:
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon " src="~/Content/halfBuddhaLogo.png" alt=".5" />
+                            break;
+                        case 5:
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            break;
+
+                        default:
+                            break;
                     }
                 </td>
                 <td>

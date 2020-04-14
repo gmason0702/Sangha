@@ -138,7 +138,43 @@ public class Center
             {
                 if (Ratings != null && Ratings.Count != 0)
                 {
-                    return (double)Ratings.Sum(rating => rating.MyRating) / Ratings.Count;
+                    var avg = (double)Ratings.Sum(rating => rating.MyRating) / Ratings.Count;
+                    if (avg >= 1 && avg < 1.5)
+                    {
+                        return avg = 1;
+                    }
+                    else if (avg >= 1.5 && avg <2)
+                    {
+                        return avg = 1.5;
+                    }
+                    else if (avg >= 2 && avg < 2.5)
+                    {
+                        return avg = 2;
+                    }
+                    else if (avg >= 2.5 && avg < 3)
+                    {
+                        return avg = 2.5;
+                    }
+                    else if (avg >= 3 && avg < 3.5)
+                    {
+                        return avg = 3;
+                    }
+                    else if (avg >= 3.5 && avg < 4)
+                    {
+                        return avg = 3.5;
+                    }
+                    else if (avg >= 4 && avg <4.5)
+                    {
+                        return avg = 4;
+                    }
+                    else if (avg >= 4.5 && avg <5)
+                    {
+                        return avg = 4.5;
+                    }
+                    else
+                    {
+                        return avg = 5;
+                    }
                 }
                 return 0;
             }

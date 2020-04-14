@@ -7,13 +7,13 @@ namespace Sangha.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class AddedSitTrackerClassModelsServiceControllerViews : IMigrationMetadata
+    public sealed partial class FixedMigrations : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedSitTrackerClassModelsServiceControllerViews));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FixedMigrations));
         
         string IMigrationMetadata.Id
         {
-            get { return "202004100053000_AddedSitTrackerClassModelsServiceControllerViews"; }
+            get { return "202004141327270_FixedMigrations"; }
         }
         
         string IMigrationMetadata.Source

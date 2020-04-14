@@ -36,6 +36,7 @@ namespace Sangha.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
         public IEnumerable<TeacherListItem> GetTeachers()
         {
             using (var ctx = new ApplicationDbContext())
@@ -62,6 +63,7 @@ namespace Sangha.Services
                 return query.ToArray();
             }
         }
+
         public TeacherDetail GetTeacherById(int id)
         {
             using (var ctx = new ApplicationDbContext())

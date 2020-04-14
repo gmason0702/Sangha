@@ -186,3 +186,14 @@ blockquote footer, blockquote small, blockquote .small {
         transform: scaleX(1.3) scaleY(1.5);
         opacity: 0;
     }
+
+.ratingIcon{
+    height:30px;
+}
+
+.timer{
+    background-color:antiquewhite;
+    border-radius:15px;
+    padding:3rem;
+    margin-top:5rem;
+}

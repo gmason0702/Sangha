@@ -53,20 +53,79 @@
             <td>
                 @Html.DisplayFor(modelItem => item.State)
             </td>
+            @*<td>
+                    @if (item.AvgRating != 0)
+                    {
+                        @Html.DisplayFor(modelItem => item.AvgRating)
+                    }
+                </td>*@
             <td>
                 @if (item.AvgRating != 0)
                 {
-                    @Html.DisplayFor(modelItem => item.AvgRating)
+
+                    switch (item.AvgRating)
+                    {
+                        case 1:
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            break;
+                        case 1.5:
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon " src="~/Content/halfBuddhaLogo.png" alt=".5" />
+                            break;
+                        case 2:
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            break;
+                        case 2.5:
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon " src="~/Content/halfBuddhaLogo.png" alt=".5" />
+                            break;
+                        case 3:
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            break;
+                        case 3.5:
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon " src="~/Content/halfBuddhaLogo.png" alt=".5" />
+                            break;
+                        case 4:
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            break;
+                        case 4.5:
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon " src="~/Content/halfBuddhaLogo.png" alt=".5" />
+                            break;
+                        case 5:
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            <img class="ratingIcon" src="~/Content/fullBuddhaLogo.png" alt="1" />
+                            break;
+
+                        default:
+                            break;
+                    }
                 }
-            </td>
-            <td>
-                @Html.ActionLink("Rate", "Rate", new { id = item.CenterId }) |
-                @Html.ActionLink("Edit", "Edit", new { id = item.CenterId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CenterId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CenterId })
-            </td>
-        </tr>
-    }
+        </td>
+        <td>
+            @Html.ActionLink("Rate", "Rate", new { id = item.CenterId }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.CenterId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CenterId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CenterId })
+        </td>
+    </tr>
+}
 
 </table>
 
