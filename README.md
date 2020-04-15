@@ -1,4 +1,4 @@
-# Sangha
+# Hello, friends
 
                                                       Welcome to The Sangha!
                                                       
@@ -9,10 +9,10 @@
 
 Instructions:
 
-Clone to local Visual Studio Community (VSC) File
-Hit Run from VSC (Google Chrome)
-Register/Login (check box to maintain session)
-Enjoy access to the database of talks, teachers, retreats, and centers. Additionally, the My Sits page will allow you to chart and track your meditation practice.
+-Clone to local Visual Studio Community (VSC) File
+-Hit Run from VSC (Google Chrome)
+-Register/Login (check box to maintain session)
+-Enjoy access to the database of talks, teachers, retreats, and centers. Additionally, the My Sits page will allow you to chart and track your meditation practice.
 
 
 Resources Used:
