@@ -18,7 +18,7 @@
 -Enjoy access to the database of talks, teachers, retreats, and centers. Additionally, the My Sits page will allow you to chart and track your meditation practice.
 
 Deployed application on Azure (valid until 5/12/2020)
-https://thesangha.azurewebsites.net/Center
+https://thesangha.azurewebsites.net
 
 ## Resources Used:
 
