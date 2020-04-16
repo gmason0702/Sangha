@@ -7,7 +7,7 @@
   The SANGHA caters to meditation lovers searching for a way to interact seamlessly with the tens of thousands of open-sourced talks and guided meditations available, as well as track their own practice, all in one app, for free!  Our developer created this application based on an interest in the practice of meditation and the idea of implementing a meditation app without all the restrictions of most meditation apps out today. 
 
 
-##Instructions:
+## Instructions:
 
 -Clone to local Visual Studio Community (VSC) File
 
@@ -20,7 +20,7 @@
 Deployed application on Azure (valid until 5/12/2020)
 https://thesangha.azurewebsites.net/Center
 
-Resources Used:
+## Resources Used:
 
 -https://dharmaseed.org
 
